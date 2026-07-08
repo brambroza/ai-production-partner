@@ -16,11 +16,7 @@ const inquiryTypeValues = [
 
 type InquiryType = (typeof inquiryTypeValues)[number];
 
-/**
- * Contact form that composes a structured email via the visitor's mail
- * client (mailto:) — a static site needs no backend, and the inquiry
- * lands in the inbox pre-formatted.
- */
+/** Contact form that sends inquiries through the API with a mailto fallback. */
 export default function ContactForm({
   defaultType,
   locale = "en",
@@ -49,39 +45,64 @@ export default function ContactForm({
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const typeLabel =
+    inquiryTypes.find((option) => option.value === type)?.label ?? type;
+
+  function mailtoHref(typeLabel: string) {
+    const subject = `[${typeLabel}] ${company.trim() || name.trim() || "Website inquiry"}`;
+    const body = [
+      `Name: ${name.trim()}`,
+      `Email: ${email.trim()}`,
+      `Company: ${company.trim() || "-"}`,
+      `Inquiry: ${typeLabel}`,
+      `Inquiry value: ${type}`,
+      `App built with: ${builtWith.trim() || "-"}`,
+      "",
+      message.trim(),
+    ].join("\n");
+
+    return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
     setStatus("sending");
     setErrorMessage("");
 
-    const typeLabel =
-      inquiryTypes.find((option) => option.value === type)?.label ?? type;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          company,
+          type,
+          typeLabel,
+          builtWith,
+          message,
+          locale,
+        }),
+      });
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        company,
-        type,
-        typeLabel,
-        builtWith,
-        message,
-        locale,
-      }),
-    });
+      const result = (await response.json().catch(() => ({}))) as { error?: string };
 
-    const result = (await response.json().catch(() => ({}))) as { error?: string };
-
-    if (!response.ok) {
+      if (!response.ok) {
+        setStatus("error");
+        setErrorMessage(
+          result.error ??
+            (locale === "th"
+              ? "ส่งข้อความไม่สำเร็จ กรุณาลองใหม่หรือส่งอีเมลโดยตรง"
+              : "Message could not be sent. Please try again or email us directly."),
+        );
+        return;
+      }
+    } catch {
       setStatus("error");
       setErrorMessage(
-        result.error ??
-          (locale === "th"
-            ? "ส่งข้อความไม่สำเร็จ กรุณาลองใหม่หรือส่งอีเมลโดยตรง"
-            : "Message could not be sent. Please try again or email us directly."),
+        locale === "th"
+          ? "เชื่อมต่อระบบส่งข้อความไม่ได้ กรุณาส่งอีเมลโดยตรง"
+          : "Could not reach the message service. Please email us directly.",
       );
       return;
     }
@@ -206,7 +227,12 @@ export default function ContactForm({
         </p>
       )}
       {status === "error" && (
-        <p className="text-sm font-medium text-red-300">{errorMessage}</p>
+        <p className="text-sm font-medium text-red-300">
+          {errorMessage}{" "}
+          <a href={mailtoHref(typeLabel)} className="text-accent-300 underline">
+            {locale === "th" ? "เปิดอีเมลพร้อมข้อความนี้" : "Open email with this message"}
+          </a>
+        </p>
       )}
       <p className="text-sm text-slate-500">
         {locale === "th"

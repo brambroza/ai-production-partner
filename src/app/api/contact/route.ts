@@ -13,6 +13,7 @@ type ContactPayload = {
 };
 
 const resendEndpoint = "https://api.resend.com/emails";
+const resendTimeoutMs = 10_000;
 
 function text(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
@@ -20,6 +21,19 @@ function text(value: unknown): string {
 
 function isEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function envText(value: string | undefined): string {
+  return (value ?? "").trim().replace(/^['"]|['"]$/g, "").trim();
+}
+
+function isEmailSender(value: string): boolean {
+  const match = value.match(/^([^<>]+?)\s*<([^<>]+)>$/);
+  if (match) {
+    return Boolean(match[1].trim()) && isEmail(match[2].trim());
+  }
+
+  return isEmail(value);
 }
 
 export async function POST(request: Request) {
@@ -46,10 +60,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL ?? site.email;
+  const apiKey = envText(process.env.RESEND_API_KEY);
+  const to = envText(process.env.CONTACT_TO_EMAIL) || site.email;
   const from =
-    process.env.CONTACT_FROM_EMAIL ??
+    envText(process.env.CONTACT_FROM_EMAIL) ||
     "AI Production Partner <onboarding@resend.dev>";
 
   if (!apiKey) {
@@ -59,6 +73,19 @@ export async function POST(request: Request) {
           locale === "th"
             ? "ยังไม่ได้ตั้งค่า RESEND_API_KEY บน server"
             : "RESEND_API_KEY is not configured on the server.",
+      },
+      { status: 500 },
+    );
+  }
+
+  if (!isEmailSender(from)) {
+    console.error("Invalid CONTACT_FROM_EMAIL", from);
+    return NextResponse.json(
+      {
+        error:
+          locale === "th"
+            ? "ตั้งค่า CONTACT_FROM_EMAIL บน server ไม่ถูกต้อง"
+            : "CONTACT_FROM_EMAIL is not configured correctly on the server.",
       },
       { status: 500 },
     );
@@ -76,24 +103,41 @@ export async function POST(request: Request) {
     message,
   ];
 
-  const response = await fetch(resendEndpoint, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to,
-      reply_to: email,
-      subject,
-      text: lines.join("\n"),
-    }),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), resendTimeoutMs);
 
-  if (!response.ok) {
-    const detail = await response.text().catch(() => "");
-    console.error("Contact email failed", detail);
+  try {
+    const response = await fetch(resendEndpoint, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to,
+        reply_to: email,
+        subject,
+        text: lines.join("\n"),
+      }),
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      const detail = await response.text().catch(() => "");
+      console.error("Contact email failed", detail);
+      return NextResponse.json(
+        {
+          error:
+            locale === "th"
+              ? "ส่งข้อความไม่สำเร็จ กรุณาลองใหม่หรือส่งอีเมลโดยตรง"
+              : "Message could not be sent. Please try again or email us directly.",
+        },
+        { status: 502 },
+      );
+    }
+  } catch (error) {
+    console.error("Contact email request failed", error);
     return NextResponse.json(
       {
         error:
@@ -103,6 +147,8 @@ export async function POST(request: Request) {
       },
       { status: 502 },
     );
+  } finally {
+    clearTimeout(timeout);
   }
 
   return NextResponse.json({ ok: true });
