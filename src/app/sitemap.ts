@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl("/ai-app-security-checklist"), lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: absoluteUrl("/resources"), lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: absoluteUrl("/blog"), lastModified: now, changeFrequency: "daily", priority: 0.7 },
+    { url: absoluteUrl("/pricing"), lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: absoluteUrl("/contact"), lastModified: now, changeFrequency: "yearly", priority: 0.6 },
   ];
 

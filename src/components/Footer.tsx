@@ -48,6 +48,7 @@ export default function Footer() {
     {
       heading: dict.footer.companyColumn,
       links: [
+        { label: dict.footer.pricing, href: "/pricing" },
         { label: dict.footer.contact, href: "/contact" },
         { label: dict.footer.bookFree, href: "/book-assessment" },
       ],

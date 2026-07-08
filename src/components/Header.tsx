@@ -22,6 +22,7 @@ export default function Header() {
     { label: dict.nav.scoreTool, href: localePath(locale, "/tools/production-score") },
     { label: dict.nav.resources, href: localePath(locale, "/resources") },
     { label: dict.nav.blog, href: localePath(locale, "/blog") },
+    { label: dict.nav.pricing, href: localePath(locale, "/pricing") },
   ];
 
   const languageSwitch = (
@@ -69,7 +70,7 @@ export default function Header() {
           <span className="sm:hidden">AI Production Partner</span>
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden lg:block">
+        <nav aria-label="Main navigation" className="hidden xl:block">
           <ul className="flex items-center gap-5 text-sm text-slate-300">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -84,7 +85,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           {languageSwitch}
           <Link
             href={localePath(locale, site.primaryCta.href)}
@@ -94,7 +95,7 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           {languageSwitch}
           <button
             type="button"
@@ -128,7 +129,7 @@ export default function Header() {
         <nav
           id="mobile-menu"
           aria-label="Mobile navigation"
-          className="border-t border-ink-700/60 bg-ink-900 lg:hidden"
+          className="border-t border-ink-700/60 bg-ink-900 xl:hidden"
         >
           <ul className="space-y-1 px-4 py-4">
             {navLinks.map((link) => (

@@ -14,6 +14,7 @@ export type UiDict = {
     scoreTool: string;
     resources: string;
     blog: string;
+    pricing: string;
     bookShort: string;
     toggleMenu: string;
     switchLabel: string;
@@ -36,6 +37,7 @@ export type UiDict = {
     rights: string;
     positioning: string;
     contact: string;
+    pricing: string;
     bookFree: string;
     allSolutions: string;
     resourceCenter: string;
@@ -104,6 +106,7 @@ const en: UiDict = {
     scoreTool: "Free Score Tool",
     resources: "Resources",
     blog: "Blog",
+    pricing: "Pricing",
     bookShort: "Book Free Assessment",
     toggleMenu: "Toggle navigation menu",
     switchLabel: "เปลี่ยนเป็นภาษาไทย",
@@ -128,6 +131,7 @@ const en: UiDict = {
     positioning:
       "Not a software house. Not a web agency. We make AI-built apps production-ready.",
     contact: "Contact",
+    pricing: "Pricing",
     bookFree: "Book a Free Assessment",
     allSolutions: "All Solutions",
     resourceCenter: "Resource Center",
@@ -202,6 +206,7 @@ const th: UiDict = {
     scoreTool: "เครื่องมือฟรี",
     resources: "คลังความรู้",
     blog: "บทความ",
+    pricing: "ราคา",
     bookShort: "ขอรับการประเมินฟรี",
     toggleMenu: "เปิด/ปิดเมนู",
     switchLabel: "Switch to English",
@@ -226,6 +231,7 @@ const th: UiDict = {
     positioning:
       "เราไม่ใช่ software house ไม่ใช่ web agency — เราทำให้แอปที่สร้างด้วย AI พร้อมใช้งานจริงบน Production",
     contact: "ติดต่อเรา",
+    pricing: "ราคาแพ็กเกจ",
     bookFree: "ขอรับการประเมินฟรี",
     allSolutions: "โซลูชันทั้งหมด",
     resourceCenter: "คลังความรู้",

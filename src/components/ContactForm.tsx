@@ -1,47 +1,97 @@
 "use client";
 
 import { useState } from "react";
+import { ui } from "@/dictionaries/ui";
+import type { Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
-const inquiryTypes = [
-  { value: "free-assessment", label: "Book a Free Production Assessment" },
-  { value: "readiness-review", label: "Request a Production Readiness Review" },
-  { value: "security-audit", label: "AI Security Audit" },
-  { value: "deployment", label: "Deployment / Migration" },
-  { value: "support", label: "Ongoing Production Support" },
-  { value: "other", label: "Something else" },
-];
+const inquiryTypeValues = [
+  "free-assessment",
+  "readiness-review",
+  "security-audit",
+  "deployment",
+  "support",
+  "other",
+] as const;
+
+type InquiryType = (typeof inquiryTypeValues)[number];
 
 /**
  * Contact form that composes a structured email via the visitor's mail
  * client (mailto:) — a static site needs no backend, and the inquiry
  * lands in the inbox pre-formatted.
  */
-export default function ContactForm({ defaultType }: { defaultType?: string }) {
+export default function ContactForm({
+  defaultType,
+  locale = "en",
+}: {
+  defaultType?: string;
+  locale?: Locale;
+}) {
+  const dict = ui(locale).form;
+  const inquiryTypes: { value: InquiryType; label: string }[] = [
+    { value: "free-assessment", label: dict.types.freeAssessment },
+    { value: "readiness-review", label: dict.types.readinessReview },
+    { value: "security-audit", label: dict.types.securityAudit },
+    { value: "deployment", label: dict.types.deployment },
+    { value: "support", label: dict.types.support },
+    { value: "other", label: dict.types.other },
+  ];
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [type, setType] = useState(
-    inquiryTypes.some((option) => option.value === defaultType)
-      ? (defaultType as string)
+    inquiryTypeValues.some((value) => value === defaultType)
+      ? (defaultType as InquiryType)
       : "free-assessment",
   );
   const [builtWith, setBuiltWith] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function submit(event: React.FormEvent) {
+  async function submit(event: React.FormEvent) {
     event.preventDefault();
+    setStatus("sending");
+    setErrorMessage("");
+
     const typeLabel =
       inquiryTypes.find((option) => option.value === type)?.label ?? type;
-    const subject = `[${typeLabel}] ${company || name || "Website inquiry"}`;
-    const body = [
-      `Name: ${name}`,
-      `Company: ${company}`,
-      `Inquiry: ${typeLabel}`,
-      `App built with: ${builtWith}`,
-      "",
-      message,
-    ].join("\n");
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        company,
+        type,
+        typeLabel,
+        builtWith,
+        message,
+        locale,
+      }),
+    });
+
+    const result = (await response.json().catch(() => ({}))) as { error?: string };
+
+    if (!response.ok) {
+      setStatus("error");
+      setErrorMessage(
+        result.error ??
+          (locale === "th"
+            ? "ส่งข้อความไม่สำเร็จ กรุณาลองใหม่หรือส่งอีเมลโดยตรง"
+            : "Message could not be sent. Please try again or email us directly."),
+      );
+      return;
+    }
+
+    setStatus("sent");
+    setName("");
+    setEmail("");
+    setCompany("");
+    setBuiltWith("");
+    setMessage("");
   }
 
   const inputClass =
@@ -52,7 +102,7 @@ export default function ContactForm({ defaultType }: { defaultType?: string }) {
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-slate-300">
-            Your name
+            {dict.name}
           </span>
           <input
             type="text"
@@ -65,7 +115,23 @@ export default function ContactForm({ defaultType }: { defaultType?: string }) {
         </label>
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-slate-300">
-            Company (optional)
+            {locale === "th" ? "อีเมลสำหรับติดต่อกลับ" : "Reply email"}
+          </span>
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            autoComplete="email"
+            className={inputClass}
+          />
+        </label>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className="block">
+          <span className="mb-1.5 block text-sm font-medium text-slate-300">
+            {dict.company}
           </span>
           <input
             type="text"
@@ -79,11 +145,11 @@ export default function ContactForm({ defaultType }: { defaultType?: string }) {
 
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-slate-300">
-          What do you need?
+          {dict.needWhat}
         </span>
         <select
           value={type}
-          onChange={(event) => setType(event.target.value)}
+          onChange={(event) => setType(event.target.value as InquiryType)}
           className={inputClass}
         >
           {inquiryTypes.map((option) => (
@@ -96,44 +162,60 @@ export default function ContactForm({ defaultType }: { defaultType?: string }) {
 
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-slate-300">
-          What was the app built with? (optional)
+          {dict.builtWith}
         </span>
         <input
           type="text"
           value={builtWith}
           onChange={(event) => setBuiltWith(event.target.value)}
-          placeholder="e.g. Cursor + Next.js + Supabase, currently on Replit"
+          placeholder={dict.builtWithPlaceholder}
           className={inputClass}
         />
       </label>
 
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-slate-300">
-          Tell us about your situation
+          {dict.situation}
         </span>
         <textarea
           required
           rows={5}
           value={message}
           onChange={(event) => setMessage(event.target.value)}
-          placeholder="What you built, where it runs today, and what's worrying you."
+          placeholder={dict.situationPlaceholder}
           className={inputClass}
         />
       </label>
 
       <button
         type="submit"
+        disabled={status === "sending"}
         className="w-full rounded-md bg-accent-500 px-6 py-3.5 font-semibold text-ink-950 transition-colors hover:bg-accent-400 sm:w-auto"
       >
-        Send inquiry
+        {status === "sending"
+          ? locale === "th"
+            ? "กำลังส่ง..."
+            : "Sending..."
+          : dict.send}
       </button>
+      {status === "sent" && (
+        <p className="text-sm font-medium text-accent-300">
+          {locale === "th"
+            ? "ส่งข้อความแล้ว เราจะตอบกลับทางอีเมลภายใน 1 วันทำการ"
+            : "Message sent. We will reply by email within one business day."}
+        </p>
+      )}
+      {status === "error" && (
+        <p className="text-sm font-medium text-red-300">{errorMessage}</p>
+      )}
       <p className="text-sm text-slate-500">
-        Opens your email client with the message pre-filled — or write to us
-        directly at{" "}
+        {locale === "th"
+          ? "ข้อความจะถูกส่งถึงทีมงานโดยตรง หรือเขียนถึงเราได้ที่"
+          : "Your message is sent directly to our team, or write to us at"}{" "}
         <a href={`mailto:${site.email}`} className="text-accent-300 hover:underline">
           {site.email}
         </a>
-        . Response within one business day. NDA available.
+        . {dict.mailtoNote2}
       </p>
     </form>
   );
