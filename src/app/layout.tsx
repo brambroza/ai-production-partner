@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   creator: site.name,
   publisher: site.name,
   formatDetection: { telephone: false },
+  verification: {
+    google: "8H0SNuIjr6ZY-tLBzBf85s3jZzY12koKu-ACp7SLNXg",
+  },
   robots: {
     index: true,
     follow: true,
