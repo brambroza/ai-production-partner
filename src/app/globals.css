@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/*
+ * AI Production Partner — design tokens.
+ * Enterprise-grade, minimal, dark-first palette aimed at CTOs and
+ * engineering teams. Accent is used sparingly for conversion points.
+ */
+@theme {
+  --color-ink-950: #060a13;
+  --color-ink-900: #0b1120;
+  --color-ink-800: #111a2e;
+  --color-ink-700: #1c2942;
+  --color-ink-600: #2b3b5c;
+
+  --color-accent-300: #5eead4;
+  --color-accent-400: #2dd4bf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: #e2e8f0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-accent-500);
+  color: var(--color-ink-950);
+}
+
+/* Visible focus ring for keyboard users (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--color-accent-400);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
