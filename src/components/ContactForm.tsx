@@ -48,9 +48,8 @@ export default function ContactForm({
   const typeLabel =
     inquiryTypes.find((option) => option.value === type)?.label ?? type;
 
-  function mailtoHref(typeLabel: string) {
-    const subject = `[${typeLabel}] ${company.trim() || name.trim() || "Website inquiry"}`;
-    const body = [
+  function emailBody(typeLabel: string) {
+    return [
       `Name: ${name.trim()}`,
       `Email: ${email.trim()}`,
       `Company: ${company.trim() || "-"}`,
@@ -60,6 +59,11 @@ export default function ContactForm({
       "",
       message.trim(),
     ].join("\n");
+  }
+
+  function mailtoHref(typeLabel: string) {
+    const subject = `[${typeLabel}] ${company.trim() || name.trim() || "Website inquiry"}`;
+    const body = emailBody(typeLabel);
 
     return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
@@ -227,12 +231,18 @@ export default function ContactForm({
         </p>
       )}
       {status === "error" && (
-        <p className="text-sm font-medium text-red-300">
-          {errorMessage}{" "}
-          <a href={mailtoHref(typeLabel)} className="text-accent-300 underline">
+        <div
+          role="alert"
+          className="space-y-3 rounded-md border border-red-400/30 bg-red-950/30 p-4"
+        >
+          <p className="text-sm font-medium text-red-200">{errorMessage}</p>
+          <a
+            href={mailtoHref(typeLabel)}
+            className="inline-flex w-full items-center justify-center rounded-md border border-accent-400 px-4 py-2.5 text-sm font-semibold text-accent-200 transition-colors hover:bg-accent-400 hover:text-ink-950 sm:w-auto"
+          >
             {locale === "th" ? "เปิดอีเมลพร้อมข้อความนี้" : "Open email with this message"}
           </a>
-        </p>
+        </div>
       )}
       <p className="text-sm text-slate-500">
         {locale === "th"

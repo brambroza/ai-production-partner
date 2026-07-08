@@ -10,7 +10,7 @@ export const site = {
   tagline: "Turn AI-generated applications into production-ready systems.",
   description:
     "AI Production Partner transforms AI-generated applications from tools like Cursor, Claude Code, Lovable, Replit, and Bolt into secure, scalable, enterprise-grade production systems. Production readiness assessments, security audits, Docker and Kubernetes deployment, CI/CD, monitoring, and ongoing support.",
-  email: "aipartnerproduction@gmail.com",
+  email: "amnart.gl@gmail.com",
   twitter: "@aiprodpartner",
   linkedin: "https://www.linkedin.com/company/ai-production-partner",
   github: "https://github.com/ai-production-partner",
