@@ -3,6 +3,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
 import FaqList from "@/components/FaqList";
 import { pageMetadata } from "@/lib/metadata";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Book a Free Production Assessment — 48-Hour Scored Report",
@@ -96,6 +97,25 @@ export default function BookAssessmentPage() {
 
           <div className="mx-auto mt-14 max-w-2xl rounded-xl border border-ink-700/60 bg-ink-900 p-8">
             <h2 className="text-2xl font-bold text-white">Start here</h2>
+            {site.bookingUrl && (
+              <div className="mt-6 rounded-lg border border-accent-500/40 bg-ink-950 p-5">
+                <p className="text-sm text-slate-300">
+                  Prefer to talk it through? Grab a 20-minute slot and we'll walk
+                  your app's production gaps together — no prep needed.
+                </p>
+                <a
+                  href={site.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex rounded-md bg-accent-500 px-6 py-3 text-sm font-semibold text-ink-950 transition-colors hover:bg-accent-400"
+                >
+                  Book a 20-min call →
+                </a>
+                <p className="mt-4 text-xs text-slate-500">
+                  Or send the form below and we'll reply within one business day.
+                </p>
+              </div>
+            )}
             <div className="mt-6">
               <ContactForm defaultType="free-assessment" />
             </div>

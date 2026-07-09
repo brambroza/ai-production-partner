@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HtmlLang from "@/components/HtmlLang";
 import JsonLd from "@/components/JsonLd";
+import Analytics from "@/components/Analytics";
 import { site, absoluteUrl } from "@/lib/site";
 import {
   organizationSchema,
@@ -59,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col">
+        <Analytics />
         <HtmlLang />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />

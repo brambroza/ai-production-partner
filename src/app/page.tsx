@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import CaseStudies from "@/components/CaseStudies";
 import CtaBanner from "@/components/CtaBanner";
 import FaqList from "@/components/FaqList";
 import { pageMetadata } from "@/lib/metadata";
@@ -541,6 +542,9 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
           </div>
         </div>
       </section>
+
+      {/* 7b. Case studies (renders only when a case study is published) */}
+      <CaseStudies locale={locale} />
 
       {/* 8. Technology stack */}
       <section aria-labelledby="stack-heading" className="py-24">

@@ -16,6 +16,17 @@ export const site = {
   github: "https://github.com/ai-production-partner",
   logoPath: "/logo.svg",
   ogImagePath: "/og-image.png",
+  /**
+   * Privacy-friendly analytics domain (Plausible). When empty, no analytics
+   * script loads. Set NEXT_PUBLIC_ANALYTICS_DOMAIN in the environment to enable.
+   */
+  analyticsDomain: process.env.NEXT_PUBLIC_ANALYTICS_DOMAIN ?? "",
+  /**
+   * External booking/scheduling URL (e.g. Cal.com or Calendly). When set, the
+   * assessment page shows a "Book a call" action alongside the form. Empty =
+   * form only. Set NEXT_PUBLIC_BOOKING_URL to enable.
+   */
+  bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
   primaryCta: {
     label: "Book a Free Production Assessment",
     href: "/book-assessment",
