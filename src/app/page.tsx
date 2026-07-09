@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import BrandLogo from "@/components/BrandLogo";
 import CaseStudies from "@/components/CaseStudies";
 import CtaBanner from "@/components/CtaBanner";
 import FaqList from "@/components/FaqList";
@@ -8,12 +9,14 @@ import { site } from "@/lib/site";
 import { localePath, type Locale } from "@/lib/i18n";
 import { ui } from "@/dictionaries/ui";
 import {
+  aiBuilders,
   beforeAfter,
   frameworkPillars,
   homeFaq,
   industries,
   painPoints,
   services,
+  techIconSlug,
   techStack,
   trustSignals,
   whyAiAppsFail,
@@ -312,8 +315,26 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
             </div>
           </div>
 
+          {/* AI builder logo strip */}
+          <div className="mx-auto mt-16 max-w-4xl">
+            <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-500">
+              {localized ? "ทำงานร่วมกับ AI stack ของคุณ" : "Works with your AI stack"}
+            </p>
+            <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-5">
+              {aiBuilders.map((tool) => (
+                <li
+                  key={tool.slug}
+                  className="flex items-center gap-2 text-slate-500 transition-colors hover:text-slate-200"
+                >
+                  <BrandLogo slug={tool.slug} label={tool.name} className="h-6 w-6" />
+                  <span className="text-sm font-medium">{tool.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Trust bar */}
-          <dl className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-8 lg:grid-cols-4">
+          <dl className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-8 lg:grid-cols-4">
             {pageTrustSignals.map((signal) => (
               <div key={signal.label} className="text-center">
                 <dt className="order-2 mt-2 block text-sm leading-6 text-slate-400">
@@ -567,14 +588,24 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
                   {group.category}
                 </h3>
                 <ul className="mt-3 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-md border border-ink-600 bg-ink-950 px-2.5 py-1 text-sm text-slate-200"
-                    >
-                      {item}
-                    </li>
-                  ))}
+                  {group.items.map((item) => {
+                    const slug = techIconSlug[item];
+                    return (
+                      <li
+                        key={item}
+                        className="inline-flex items-center gap-1.5 rounded-md border border-ink-600 bg-ink-950 px-2.5 py-1 text-sm text-slate-200 transition-colors hover:border-accent-600 hover:text-white"
+                      >
+                        {slug && (
+                          <BrandLogo
+                            slug={slug}
+                            label={item}
+                            className="h-4 w-4 text-slate-400"
+                          />
+                        )}
+                        {item}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}

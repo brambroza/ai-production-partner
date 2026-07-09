@@ -104,6 +104,53 @@ export const beforeAfter: { dimension: string; before: string; after: string }[]
   { dimension: "Operations", before: "Founder answers at 2 a.m., knowledge in chat histories", after: "SLA-backed support, documented runbooks, monthly reports" },
 ];
 
+/**
+ * AI builder tools shown as a hero logo strip. `slug` maps to src/data/brand-icons.ts;
+ * tools without path data (e.g. v0) render as a text mark via <BrandLogo />.
+ */
+export const aiBuilders: { slug: string; name: string }[] = [
+  { slug: "cursor", name: "Cursor" },
+  { slug: "claude", name: "Claude Code" },
+  { slug: "lovable", name: "Lovable" },
+  { slug: "replit", name: "Replit" },
+  { slug: "bolt", name: "Bolt" },
+  { slug: "v0", name: "v0" },
+  { slug: "windsurf", name: "Windsurf" },
+];
+
+/**
+ * Maps a tech-stack item label to a brand-icon slug. Items missing here (EKS, S3,
+ * Cloud Run, UptimeRobot, …) render as plain labels — intentional, not a bug.
+ */
+export const techIconSlug: Record<string, string> = {
+  "Next.js": "nextjs",
+  React: "react",
+  "Node.js": "nodejs",
+  Python: "python",
+  ".NET": "dotnet",
+  Go: "go",
+  Vue: "vue",
+  SvelteKit: "svelte",
+  Docker: "docker",
+  Kubernetes: "kubernetes",
+  "Google Cloud": "googlecloud",
+  DigitalOcean: "digitalocean",
+  PostgreSQL: "postgresql",
+  MySQL: "mysql",
+  Redis: "redis",
+  Supabase: "supabase",
+  MongoDB: "mongodb",
+  "GitHub Actions": "githubactions",
+  "GitLab CI": "gitlab",
+  Terraform: "terraform",
+  "Argo CD": "argocd",
+  Helm: "helm",
+  Sentry: "sentry",
+  Grafana: "grafana",
+  Prometheus: "prometheus",
+  OpenTelemetry: "opentelemetry",
+};
+
 export const techStack: { category: string; items: string[] }[] = [
   { category: "Runtimes & Frameworks", items: ["Next.js", "React", "Node.js", "Python", ".NET", "Go", "Vue", "SvelteKit"] },
   { category: "Containers & Orchestration", items: ["Docker", "Kubernetes", "EKS", "AKS", "GKE", "Cloud Run"] },
