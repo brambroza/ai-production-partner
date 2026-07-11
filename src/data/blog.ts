@@ -584,9 +584,17 @@ const evergreen: { slug: string; title: string; description: string; category: s
   {
     slug: "zero-downtime-deployments-explained",
     title: "Zero-Downtime Deployments, Explained",
-    description: "Rolling, blue-green, and canary deployment strategies compared — plus the database migration discipline that makes any of them actually work.",
+    description: "Rolling, blue-green, and canary deployment strategies compared — plus the database migration discipline that makes any zero downtime deployment strategy actually work.",
     category: "DevOps",
-    keywords: ["zero downtime deployment", "blue green deployment", "rolling deployment", "database migrations deploy"],
+    keywords: [
+      "zero downtime deployment",
+      "zero downtime deployment strategies",
+      "กลยุทธ์ zero downtime deployment",
+      "zero downtime deployment ไทย",
+      "blue green deployment",
+      "rolling deployment",
+      "database migrations deploy",
+    ],
     sections: [
       { heading: "Why deploys cause downtime", paragraphs: ["The naive deploy stops the old version and starts the new one — dropping every in-flight request and going dark for however long startup takes, with no path back but panic if the new version is broken. Zero-downtime strategies all follow one principle: run old and new side by side, shift traffic gradually, and keep the old version ready until the new one proves healthy."] },
       { heading: "The three strategies", paragraphs: ["Rolling replaces instances one at a time behind a load balancer — the default, cheap and adequate for most apps. Blue-green runs a full parallel environment and switches traffic atomically — instant rollback at doubled infrastructure cost during deploys. Canary sends a small traffic slice to the new version and watches error rates before promoting — the safest, requiring solid monitoring to be meaningful.", "For most AI-built apps we deploy, health-checked rolling deploys plus one-click rollback deliver the right safety-to-complexity ratio. Blue-green and canary earn their cost at higher stakes and traffic."] },

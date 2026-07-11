@@ -10,10 +10,14 @@ export const metadata: Metadata = pageMetadata({
   path: "/production-readiness-checklist",
   keywords: [
     "production readiness checklist",
+    "production ready checklist",
+    "checklist production ready",
+    "เช็คลิสต์ production ready",
     "go live checklist",
     "deployment checklist",
     "launch checklist web app",
     "ai app production checklist",
+    "checklist เตรียม production",
   ],
 });
 
@@ -22,7 +26,7 @@ export default function ProductionReadinessChecklistPage() {
     <ChecklistPage
       path="/production-readiness-checklist"
       title="Production Readiness Checklist"
-      intro="Everything a web application needs before real users arrive — the same checklist our engineers use in paid assessments, published in full. Built with AI-generated apps in mind, applicable to any app. Work through it top to bottom: groups are ordered by how badly each hurts when it's missing."
+      intro="This free production ready checklist covers everything a web application needs before real users arrive — the same checklist our engineers use in paid assessments, published in full. Built with AI-generated apps in mind, applicable to any app. Work through it top to bottom: groups are ordered by how badly each hurts when it's missing."
       groups={productionReadinessChecklist}
       serviceHref="/production-readiness-checklist-service"
       serviceLabel="Have Us Implement It"
