@@ -6,7 +6,8 @@ import HomeMotion from "@/components/HomeMotion";
 import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 import { localePath, type Locale } from "@/lib/i18n";
-import { aiBuilders, coreOffers, coreOffersTh, homeFaq } from "@/data/homepage";
+import { aiBuilders, homeFaq } from "@/data/homepage";
+import { services } from "@/data/services";
 
 const enMetadata: Metadata = pageMetadata({
   title: "AI Production Partner — Audit, Integrate & Maintain AI-Built Systems",
@@ -42,7 +43,7 @@ type HomeCopy = {
     stats: { count: number; suffix: string; label: string }[];
   };
   why: { eyebrow: string; title: string; items: { title: string; body: string }[] };
-  offers: { eyebrow: string; title: string; lede: string; more: string };
+  offers: { eyebrow: string; title: string; lede: string; more: string; detail: string };
   steps: { eyebrow: string; title: string; items: { title: string; body: string }[] };
   faq: { eyebrow: string; title: string; items: { question: string; answer: string }[] };
   cta: { title: string; body: string; button: string; callLabel: string };
@@ -53,9 +54,9 @@ const en: HomeCopy = {
     pill: "A service of GO Along Co., Ltd.",
     titleA: "AI builds the system.",
     titleB: "We make it work for real.",
-    sub: "Audit, integrate, and look after what you built with AI — so it's safe and running every day.",
+    sub: "Security, deployment, integration, and long-term care for what you built with AI — so it's safe and running every day.",
     primary: "Request an audit",
-    secondary: "See the 3 services",
+    secondary: "See the 4 services",
     builtWith: "For systems built with",
     stats: [
       { count: 40, suffix: "+", label: "checks per audit" },
@@ -67,16 +68,18 @@ const en: HomeCopy = {
     eyebrow: "The gap",
     title: "Built with AI. Not ready for real users yet.",
     items: [
-      { title: "Security", body: "Leaked API keys and missing permission checks stay invisible until someone exploits them." },
-      { title: "Your existing systems", body: "AI can't reach your servers, database, or shop-floor devices." },
+      { title: "Not secure", body: "Leaked keys and missing permission checks stay invisible until exploited." },
+      { title: "Stuck on one laptop", body: "It runs locally, but nobody knows how to put it online properly." },
+      { title: "Cut off from your systems", body: "AI can't reach your ERP, database, or shop-floor devices." },
       { title: "Nobody looking after it", body: "No backups, no monitoring — when it breaks at 2 a.m., no one fixes it." },
     ],
   },
   offers: {
-    eyebrow: "3 core services",
-    title: "Audit. Integrate. Maintain.",
-    lede: "Take one, or all three.",
-    more: "See every service in detail",
+    eyebrow: "4 core services",
+    title: "Secure. Deploy. Integrate. Maintain.",
+    lede: "Take one, or all four.",
+    more: "See every technical service",
+    detail: "Details",
   },
   steps: {
     eyebrow: "How it works",
@@ -105,9 +108,9 @@ const th: HomeCopy = {
     pill: "บริการจาก บริษัท โกอะลอง จำกัด",
     titleA: "AI สร้างระบบได้",
     titleB: "เราทำให้ใช้งานจริงได้",
-    sub: "ตรวจ เชื่อม และดูแลระบบที่คุณสร้างด้วย AI ให้ปลอดภัย และรันได้ทุกวัน",
+    sub: "ความปลอดภัย การขึ้นระบบ การเชื่อมระบบเดิม และการดูแลระยะยาว สำหรับระบบที่คุณสร้างด้วย AI",
     primary: "ขอตรวจระบบ",
-    secondary: "ดู 3 บริการ",
+    secondary: "ดู 4 บริการ",
     builtWith: "รองรับระบบที่สร้างจาก",
     stats: [
       { count: 40, suffix: "+", label: "จุดที่เราตรวจ" },
@@ -119,16 +122,18 @@ const th: HomeCopy = {
     eyebrow: "ปัญหาที่เจอบ่อย",
     title: "สร้างด้วย AI ได้ แต่ยังไม่พร้อมให้คนใช้จริง",
     items: [
-      { title: "ความปลอดภัย", body: "API key หลุด สิทธิ์ผู้ใช้ไม่ครบ มองไม่เห็นจนกว่าจะโดนโจมตี" },
-      { title: "เชื่อมของเดิมไม่ได้", body: "AI เข้าไม่ถึง server ฐานข้อมูล และอุปกรณ์หน้างานของคุณ" },
+      { title: "ไม่ปลอดภัย", body: "API key หลุด สิทธิ์ผู้ใช้ไม่ครบ มองไม่เห็นจนกว่าจะโดนโจมตี" },
+      { title: "ขึ้นใช้งานจริงไม่เป็น", body: "รันได้แค่ในเครื่อง ไม่รู้จะเอาขึ้นออนไลน์ให้เสถียรยังไง" },
+      { title: "เชื่อมของเดิมไม่ได้", body: "AI เข้าไม่ถึง ERP ฐานข้อมูล และอุปกรณ์หน้างานของคุณ" },
       { title: "ไม่มีคนดูแล", body: "ไม่มี backup ไม่มี monitoring ล่มตอนตีสองก็ไม่มีใครแก้" },
     ],
   },
   offers: {
-    eyebrow: "3 บริการหลัก",
-    title: "ตรวจ เชื่อม ดูแล",
-    lede: "เลือกบริการเดียว หรือใช้ครบทั้งสามก็ได้",
-    more: "ดูรายละเอียดบริการทั้งหมด",
+    eyebrow: "4 บริการหลัก",
+    title: "ปลอดภัย ขึ้นระบบ เชื่อมต่อ ดูแล",
+    lede: "เลือกบริการเดียว หรือใช้ครบทั้งสี่ก็ได้",
+    more: "ดูบริการเชิงเทคนิคทั้งหมด",
+    detail: "ดูรายละเอียด",
   },
   steps: {
     eyebrow: "ขั้นตอน",
@@ -220,8 +225,13 @@ export function generateMetadata(): Metadata {
 
 export function HomeContent({ locale = "en" }: { locale?: Locale }) {
   const t = locale === "th" ? th : en;
-  const offers = locale === "th" ? coreOffersTh : coreOffers;
   const path = (href: string) => localePath(locale, href);
+  const offers = services.map((service) => ({
+    id: service.slug,
+    ...service.copy[locale],
+    tag: service.copy[locale].pricing.model,
+    href: path(`/services/${service.slug}`),
+  }));
 
   return (
     <HomeMotion>
@@ -317,7 +327,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       <section aria-labelledby="why-heading" className="bg-mint-50/70 py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Heading eyebrow={t.why.eyebrow} title={t.why.title} />
-          <ol data-stagger className="mt-12 grid gap-4 md:grid-cols-3">
+          <ol data-stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.why.items.map((item, index) => (
               <li key={item.title} className="rounded-2xl border border-mint-200 bg-white p-6">
                 <span className="font-mono text-sm font-semibold text-accent-600">
@@ -335,7 +345,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       <section aria-labelledby="services-heading" id="services" className="scroll-mt-20 py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Heading eyebrow={t.offers.eyebrow} title={t.offers.title} lede={t.offers.lede} />
-          <ol data-stagger className="mt-12 grid gap-6 lg:grid-cols-3">
+          <ol data-stagger className="mt-12 grid gap-6 md:grid-cols-2">
             {offers.map((offer, index) => (
               <li
                 key={offer.id}
@@ -369,10 +379,10 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
                   ))}
                 </ul>
                 <Link
-                  href={path(offer.cta.href)}
+                  href={offer.href}
                   className="mt-8 block rounded-full bg-mint-50 px-5 py-3 text-center font-semibold text-accent-800 ring-1 ring-mint-300 transition group-hover:bg-accent-500 group-hover:text-accent-950 group-hover:ring-accent-500"
                 >
-                  {offer.cta.label} →
+                  {t.offers.detail} →
                 </Link>
               </li>
             ))}

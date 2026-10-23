@@ -26,14 +26,20 @@ export default function Footer() {
     },
     {
       heading: dict.footer.servicesColumn,
-      links: [
-        { label: "Production Readiness Assessment", href: "/production-readiness-assessment" },
-        { label: "AI Security Audit", href: "/ai-security-audit" },
-        { label: "Docker Deployment", href: "/docker-deployment" },
-        { label: "Kubernetes Deployment", href: "/kubernetes-deployment" },
-        { label: "Cloud Deployment Services", href: "/cloud-deployment-services" },
-        { label: "CI/CD Pipeline Setup", href: "/ci-cd-pipeline-setup" },
-      ],
+      links:
+        locale === "th"
+          ? [
+              { label: "ตรวจความปลอดภัย", href: "/services/security-audit" },
+              { label: "เอาระบบขึ้นใช้งานจริง", href: "/services/deployment" },
+              { label: "เชื่อมต่อระบบเดิม", href: "/services/integration" },
+              { label: "ดูแลระบบรายเดือน", href: "/services/care-plan" },
+            ]
+          : [
+              { label: "Security Audit", href: "/services/security-audit" },
+              { label: "Deployment", href: "/services/deployment" },
+              { label: "System Integration", href: "/services/integration" },
+              { label: "Managed Hosting + Care Plan", href: "/services/care-plan" },
+            ],
     },
     {
       heading: dict.footer.resourcesColumn,
