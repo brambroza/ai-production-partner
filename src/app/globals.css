@@ -65,3 +65,16 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/*
+ * Motion: while JS is loading on a motion-friendly device, keep animated
+ * elements hidden so GSAP can reveal them without a flash. Reduced-motion
+ * users, no-JS visitors and crawlers always see everything.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html.js-motion:not(.motion-ready) [data-hero],
+  html.js-motion:not(.motion-ready) [data-reveal],
+  html.js-motion:not(.motion-ready) [data-stagger] > * {
+    visibility: hidden;
+  }
+}

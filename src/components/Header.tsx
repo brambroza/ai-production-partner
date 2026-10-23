@@ -17,9 +17,6 @@ export default function Header() {
   const navLinks = [
     { label: dict.nav.services, href: localePath(locale, "/#services") },
     { label: dict.nav.solutions, href: localePath(locale, "/solutions") },
-    { label: dict.nav.framework, href: localePath(locale, "/#framework") },
-    { label: dict.nav.checklist, href: localePath(locale, "/production-readiness-checklist") },
-    { label: dict.nav.scoreTool, href: localePath(locale, "/tools/production-score") },
     { label: dict.nav.resources, href: localePath(locale, "/resources") },
     { label: dict.nav.blog, href: localePath(locale, "/blog") },
     { label: dict.nav.pricing, href: localePath(locale, "/pricing") },

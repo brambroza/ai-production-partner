@@ -1,33 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "@/components/BrandLogo";
-import CaseStudies from "@/components/CaseStudies";
-import CtaBanner from "@/components/CtaBanner";
 import FaqList from "@/components/FaqList";
+import HomeMotion from "@/components/HomeMotion";
 import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 import { localePath, type Locale } from "@/lib/i18n";
-import { ui } from "@/dictionaries/ui";
-import {
-  aiBuilders,
-  beforeAfter,
-  frameworkPillars,
-  homeFaq,
-  industries,
-  painPoints,
-  coreOffers,
-  coreOffersTh,
-  services,
-  techIconSlug,
-  techStack,
-  trustSignals,
-  whyAiAppsFail,
-  workflow,
-} from "@/data/homepage";
-import { blogArticles } from "@/data/blog";
+import { aiBuilders, coreOffers, coreOffersTh, homeFaq } from "@/data/homepage";
 
 const enMetadata: Metadata = pageMetadata({
-  title: "AI Production Partner — Turn AI-Generated Apps into Production-Ready Systems",
+  title: "AI Production Partner — Audit, Integrate & Maintain AI-Built Systems",
   description: site.description,
   path: "/",
   keywords: [
@@ -48,392 +30,338 @@ const enMetadata: Metadata = pageMetadata({
   ],
 });
 
-/** Shared section heading block. */
-function SectionHeading({
-  eyebrow,
-  title,
-  lede,
-}: {
-  eyebrow: string;
-  title: string;
-  lede?: string;
-}) {
+type HomeCopy = {
+  hero: {
+    pill: string;
+    titleA: string;
+    titleB: string;
+    sub: string;
+    primary: string;
+    secondary: string;
+    builtWith: string;
+    stats: { count: number; suffix: string; label: string }[];
+  };
+  why: { eyebrow: string; title: string; items: { title: string; body: string }[] };
+  offers: { eyebrow: string; title: string; lede: string; more: string };
+  steps: { eyebrow: string; title: string; items: { title: string; body: string }[] };
+  faq: { eyebrow: string; title: string; items: { question: string; answer: string }[] };
+  cta: { title: string; body: string; button: string; callLabel: string };
+};
+
+const en: HomeCopy = {
+  hero: {
+    pill: "A service of GO Along Co., Ltd.",
+    titleA: "AI builds the system.",
+    titleB: "We make it work for real.",
+    sub: "Audit, integrate, and look after what you built with AI — so it's safe and running every day.",
+    primary: "Request an audit",
+    secondary: "See the 3 services",
+    builtWith: "For systems built with",
+    stats: [
+      { count: 40, suffix: "+", label: "checks per audit" },
+      { count: 48, suffix: " hrs", label: "to your findings report" },
+      { count: 100, suffix: "%", label: "code and data stay yours" },
+    ],
+  },
+  why: {
+    eyebrow: "The gap",
+    title: "Built with AI. Not ready for real users yet.",
+    items: [
+      { title: "Security", body: "Leaked API keys and missing permission checks stay invisible until someone exploits them." },
+      { title: "Your existing systems", body: "AI can't reach your servers, database, or shop-floor devices." },
+      { title: "Nobody looking after it", body: "No backups, no monitoring — when it breaks at 2 a.m., no one fixes it." },
+    ],
+  },
+  offers: {
+    eyebrow: "3 core services",
+    title: "Audit. Integrate. Maintain.",
+    lede: "Take one, or all three.",
+    more: "See every service in detail",
+  },
+  steps: {
+    eyebrow: "How it works",
+    title: "Three steps to a system you can trust",
+    items: [
+      { title: "Send us your system", body: "Repository access under NDA." },
+      { title: "Get the report", body: "Findings ranked by risk, plus a fixed price." },
+      { title: "We fix, connect, and maintain", body: "Pick what you need. We stay on call." },
+    ],
+  },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Common questions",
+    items: [0, 1, 3, 5, 8].map((i) => homeFaq[i]),
+  },
+  cta: {
+    title: "Tell us what you built",
+    body: "We reply within one business day with a straight technical answer.",
+    button: "Request an audit",
+    callLabel: "Call",
+  },
+};
+
+const th: HomeCopy = {
+  hero: {
+    pill: "บริการจาก บริษัท โกอะลอง จำกัด",
+    titleA: "AI สร้างระบบได้",
+    titleB: "เราทำให้ใช้งานจริงได้",
+    sub: "ตรวจ เชื่อม และดูแลระบบที่คุณสร้างด้วย AI ให้ปลอดภัย และรันได้ทุกวัน",
+    primary: "ขอตรวจระบบ",
+    secondary: "ดู 3 บริการ",
+    builtWith: "รองรับระบบที่สร้างจาก",
+    stats: [
+      { count: 40, suffix: "+", label: "จุดที่เราตรวจ" },
+      { count: 48, suffix: " ชม.", label: "รู้ผลการตรวจ" },
+      { count: 100, suffix: "%", label: "โค้ดและข้อมูลเป็นของคุณ" },
+    ],
+  },
+  why: {
+    eyebrow: "ปัญหาที่เจอบ่อย",
+    title: "สร้างด้วย AI ได้ แต่ยังไม่พร้อมให้คนใช้จริง",
+    items: [
+      { title: "ความปลอดภัย", body: "API key หลุด สิทธิ์ผู้ใช้ไม่ครบ มองไม่เห็นจนกว่าจะโดนโจมตี" },
+      { title: "เชื่อมของเดิมไม่ได้", body: "AI เข้าไม่ถึง server ฐานข้อมูล และอุปกรณ์หน้างานของคุณ" },
+      { title: "ไม่มีคนดูแล", body: "ไม่มี backup ไม่มี monitoring ล่มตอนตีสองก็ไม่มีใครแก้" },
+    ],
+  },
+  offers: {
+    eyebrow: "3 บริการหลัก",
+    title: "ตรวจ เชื่อม ดูแล",
+    lede: "เลือกบริการเดียว หรือใช้ครบทั้งสามก็ได้",
+    more: "ดูรายละเอียดบริการทั้งหมด",
+  },
+  steps: {
+    eyebrow: "ขั้นตอน",
+    title: "3 ขั้นตอน สู่ระบบที่ไว้ใจได้",
+    items: [
+      { title: "ส่งระบบมาให้ตรวจ", body: "เปิดสิทธิ์ดูโค้ด พร้อมเซ็น NDA" },
+      { title: "รับรายงานและราคา", body: "จุดเสี่ยงเรียงตามความสำคัญ พร้อมราคาเหมา" },
+      { title: "แก้ เชื่อม และดูแลต่อ", body: "เลือกเฉพาะที่ต้องการ มีทีมคอยรับเรื่อง" },
+    ],
+  },
+  faq: {
+    eyebrow: "คำถามที่พบบ่อย",
+    title: "คำถามที่พบบ่อย",
+    items: [
+      {
+        question: "ใช้ AI สร้างระบบเองได้แล้ว ทำไมต้องจ้างเรา?",
+        answer: "สร้างด้วย AI ต่อไปได้เลย เพราะเร็วจริง สิ่งที่ AI ไม่ได้ให้คือความรับผิดชอบ ทั้งการตรวจว่าปลอดภัย การเชื่อมกับระบบเดิม และคนที่คอยดูแลให้ระบบรันได้ทุกวัน",
+      },
+      {
+        question: "AI Production Partner คือใคร?",
+        answer: "เป็นบริการของ บริษัท โกอะลอง จำกัด software house ในสมุทรปราการ ที่ทำระบบ เว็บ แอป และดูแล network, server, backup ให้ธุรกิจไทย",
+      },
+      {
+        question: "การตรวจระบบได้อะไรบ้าง?",
+        answer: "รายงานจุดเสี่ยงจากการตรวจ 40+ จุด พร้อมคะแนนความพร้อม และแผนแก้แบบราคาเหมา รู้ผลภายใน 48 ชั่วโมง",
+      },
+      {
+        question: "เชื่อมกับ ERP หรือฐานข้อมูลเดิมได้ไหม?",
+        answer: "ได้ ทั้ง ERP โปรแกรมบัญชี SQL Server, MySQL, PostgreSQL, LINE OA, e-Tax Invoice และอุปกรณ์หน้างาน",
+      },
+      {
+        question: "Care Plan รายเดือนดูแลอะไรบ้าง?",
+        answer: "Hosting, monitoring แจ้งเตือนผ่าน LINE, backup พร้อมทดสอบกู้คืน, security patch และรายงานรายเดือน",
+      },
+    ],
+  },
+  cta: {
+    title: "เล่าให้เราฟังว่าคุณสร้างอะไรไว้",
+    body: "ตอบกลับภายใน 1 วันทำการ ด้วยคำตอบเชิงเทคนิคที่ตรงประเด็น",
+    button: "ขอตรวจระบบ",
+    callLabel: "โทร",
+  },
+};
+
+const homeThMetadata = {
+  title: "ตรวจ เชื่อม และดูแลระบบที่สร้างด้วย AI | AI Production Partner by โกอะลอง",
+  description:
+    "รับตรวจระบบที่สร้างด้วย ChatGPT, Claude, Cursor ก่อนใช้งานจริง (ราคาเหมา รู้ผล 48 ชม.) เชื่อมต่อ ERP ฐานข้อมูล อุปกรณ์หน้างาน และดูแล hosting, backup, security รายเดือน โดย บริษัท โกอะลอง จำกัด",
+  keywords: [
+    "ตรวจระบบที่สร้างด้วย AI",
+    "ตรวจโค้ดที่ AI เขียน",
+    "แก้ระบบที่ทำด้วย AI",
+    "รับแก้โปรแกรมที่ ChatGPT เขียน",
+    "audit ระบบ ก่อนใช้งานจริง",
+    "ตรวจสอบความปลอดภัยเว็บแอปพลิเคชัน",
+    "รับเชื่อมต่อระบบ ERP",
+    "เชื่อม API กับ ERP",
+    "เชื่อมระบบกับ SQL Server",
+    "รับทำ system integration",
+    "เชื่อม LINE OA กับระบบ",
+    "รับดูแลระบบรายเดือน",
+    "รับดูแลเว็บไซต์และ server รายเดือน",
+    "managed hosting ประเทศไทย",
+    "บริการ backup ข้อมูลบริษัท",
+    "deploy แอปที่สร้างด้วย AI",
+    "vibe coding ขึ้น production",
+    "software house สมุทรปราการ",
+    "โกอะลอง",
+    "GO Along",
+  ],
+};
+
+/** Small centered heading used by every section. */
+function Heading({ eyebrow, title, lede }: { eyebrow: string; title: string; lede?: string }) {
   return (
-    <div className="mx-auto max-w-3xl text-center">
-      <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
-        {eyebrow}
-      </p>
+    <div data-reveal className="mx-auto max-w-2xl text-center">
+      <p className="text-sm font-semibold tracking-wide text-accent-600">{eyebrow}</p>
       <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         {title}
       </h2>
-      {lede && <p className="mt-4 text-lg leading-8 text-slate-600">{lede}</p>}
+      {lede && <p className="mt-4 text-lg text-slate-600">{lede}</p>}
     </div>
   );
 }
-
-const homeTh = {
-  metadata: {
-    title: "ตรวจ เชื่อม และดูแลระบบที่สร้างด้วย AI | AI Production Partner by โกอะลอง",
-    description:
-      "รับตรวจระบบที่สร้างด้วย ChatGPT, Claude, Cursor ก่อนใช้งานจริง (ราคาเหมา รู้ผล 48 ชม.) เชื่อมต่อ ERP ฐานข้อมูล อุปกรณ์หน้างาน และดูแล hosting, backup, security รายเดือน โดย บริษัท โกอะลอง จำกัด",
-    keywords: [
-      "ตรวจระบบที่สร้างด้วย AI",
-      "ตรวจโค้ดที่ AI เขียน",
-      "แก้ระบบที่ทำด้วย AI",
-      "รับแก้โปรแกรมที่ ChatGPT เขียน",
-      "audit ระบบ ก่อนใช้งานจริง",
-      "ตรวจสอบความปลอดภัยเว็บแอปพลิเคชัน",
-      "รับเชื่อมต่อระบบ ERP",
-      "เชื่อม API กับ ERP",
-      "เชื่อมระบบกับ SQL Server",
-      "รับทำ system integration",
-      "เชื่อม LINE OA กับระบบ",
-      "รับดูแลระบบรายเดือน",
-      "รับดูแลเว็บไซต์และ server รายเดือน",
-      "managed hosting ประเทศไทย",
-      "บริการ backup ข้อมูลบริษัท",
-      "deploy แอปที่สร้างด้วย AI",
-      "vibe coding ขึ้น production",
-      "software house สมุทรปราการ",
-      "โกอะลอง",
-      "GO Along",
-    ],
-  },
-  hero: {
-    pill: "สำหรับธุรกิจที่สร้างระบบเองด้วย ChatGPT · Claude · Cursor · Lovable · Bolt",
-    titleA: "AI สร้างระบบได้",
-    titleB: "เราทำให้ใช้งานจริงได้ และรับผิดชอบให้",
-    body:
-      "ตรวจระบบที่สร้างด้วย AI ก่อนใช้งานจริง เชื่อมต่อกับ ERP ฐานข้อมูล และอุปกรณ์หน้างานที่มีอยู่ แล้วดูแล hosting, backup และ security ให้ทุกเดือน",
-    byline: "โดยทีม บริษัท โกอะลอง จำกัด",
-  },
-  sections: {
-    core: {
-      eyebrow: "3 บริการหลัก",
-      title: "ตรวจ เชื่อม และดูแล ระบบที่คุณสร้างด้วย AI",
-      lede:
-        "เริ่มจากตรวจระบบแบบราคาเหมา ต่อด้วยเชื่อมกับระบบเดิม แล้วให้เราดูแลรายเดือน เลือกเฉพาะบริการที่ต้องการได้",
-    },
-    pain: {
-      eyebrow: "คุ้นกับปัญหานี้ไหม?",
-      title: "แอปที่ AI สร้างใช้งานได้ แต่คุณยังไม่กล้าไว้ใจ",
-      lede:
-        "ทุกทีมที่ใช้ AI ทำแอปจะเจอช่องว่างเดียวกัน ระหว่าง “มันรันได้” กับ “มันพร้อมให้ลูกค้าใช้จริง”",
-    },
-    root: {
-      eyebrow: "ต้นตอของปัญหา",
-      title: "ทำไมแอปจาก AI ถึงพังบน Production",
-      lede:
-        "ไม่ใช่เพราะ AI เขียนโค้ดแย่ แต่เพราะ production readiness ไม่เคยอยู่ใน prompt ตั้งแต่แรก",
-    },
-    framework: {
-      eyebrow: "วิธีทำงานของเรา",
-      title: "Production Readiness Framework",
-      lede:
-        "6 เสาหลักที่พาแอปที่สร้างด้วย AI จาก prototype ไปสู่ production แบบวัดผลได้",
-    },
-    services: {
-      eyebrow: "รายละเอียดบริการ",
-      title: "บริการ Production ครบวงจร",
-      lede:
-        "ทุกอย่างระหว่าง “AI สร้างแอปให้แล้ว” กับ “ลูกค้าใช้งานจริงได้อย่างมั่นใจ”",
-    },
-    workflow: {
-      eyebrow: "ขั้นตอน",
-      title: "จากการคุยครั้งแรกสู่ Production ที่เสถียร",
-      lede:
-        "ขอบเขตชัดเจน เดโมทุกสัปดาห์ ไม่มีบิลรายชั่วโมงที่คาดเดาไม่ได้",
-    },
-    beforeAfter: {
-      eyebrow: "ผลลัพธ์",
-      title: "ก่อนและหลังทำ Production Readiness",
-    },
-    stack: {
-      eyebrow: "เทคโนโลยี",
-      title: "Stack ที่เรา deploy และดูแล",
-      lede: "เลือกใช้เทคโนโลยีที่พิสูจน์แล้ว พกพาได้ และคุณเป็นเจ้าของทั้งหมด",
-    },
-    industries: {
-      eyebrow: "ลูกค้าที่เหมาะกับเรา",
-      title: "ธุรกิจที่เราพาขึ้น Production",
-    },
-    blog: {
-      eyebrow: "จากบทความ",
-      title: "Production engineering แบบอ่านเข้าใจง่าย",
-      lede: "คู่มือเรื่อง deployment, security และ operations สำหรับแอปที่สร้างด้วย AI",
-      browse: "ดูบทความทั้งหมด",
-    },
-    contact: {
-      eyebrow: "ติดต่อเรา",
-      title: "คุยกับ production engineer ไม่ใช่ฝ่ายขาย",
-      body:
-        "เล่าให้เราฟังว่าคุณสร้างอะไรไว้และต้องการให้รันที่ไหน เราจะตอบกลับเชิงเทคนิคภายใน 1 วันทำการ พร้อมประเมิน production readiness ฟรีถ้าคุณต้องการ",
-      response: "เวลาตอบกลับ",
-      responseBody: "ภายใน 1 วันทำการ และมักเร็วกว่านั้น",
-      cardTitle: "เริ่มจากการประเมินฟรี",
-      bullets: [
-        "Production Readiness Score จาก 40+ checkpoints",
-        "รายงาน findings ที่จัดลำดับความเสี่ยงภายใน 48 ชั่วโมง",
-        "ข้อเสนอแบบ fixed-price ไม่มีบิลรายชั่วโมง ไม่มีข้อผูกมัด",
-      ],
-    },
-  },
-  painPoints: [
-    {
-      title: "เดโมรันได้ แต่ยังไม่กล้าให้คนใช้จริง",
-      body:
-        "แอปทำงานตามที่สั่ง AI แล้ว แต่ยังไม่มีใครตรวจว่าเมื่อมีผู้ใช้จริง ข้อมูลจริง หรือ attacker จริง ระบบจะรับมือได้ไหม",
-    },
-    {
-      title: "ความปลอดภัยยังเป็นเครื่องหมายคำถาม",
-      body:
-        "API key ฝังในโค้ด authorization ไม่ครบ input ไม่ถูก validate เป็นปัญหาที่ AI สร้างซ้ำบ่อยและมองไม่เห็นจนกว่าจะถูกโจมตี",
-    },
-    {
-      title: "ยังอยู่บน hosting สำหรับ prototype",
-      body:
-        "Preview URL, workspace host และ database free-tier ไม่ได้ออกแบบมารองรับลูกค้าที่จ่ายเงิน ไม่มี SLA ไม่มี backup ที่คุณควบคุม และ scale ยาก",
-    },
-    {
-      title: "ไม่มีใคร operate ระบบได้จริง",
-      body:
-        "ไม่มี monitoring, logs, deployment pipeline หรือ recovery plan เหตุผลของโค้ดกระจัดกระจายใน chat history และความจำของคนคนเดียว",
-    },
-  ],
-  whyAiAppsFail: [
-    {
-      title: "Security ไม่เคยอยู่ใน prompt",
-      body:
-        "AI tools มัก optimize ให้ “ทำงานได้” มากกว่า “ปลอดภัย” จึงเกิด exposed secrets, injection paths และ broken access control ได้ง่าย",
-    },
-    {
-      title: "Architecture โตแบบสะสม",
-      body:
-        "แต่ละ session ของ AI เลือกวิธีที่ดูสมเหตุสมผลเฉพาะหน้า แต่รวมกันแล้วกลายเป็นระบบเปราะ เช่น N+1 queries, service boundary ไม่ชัด และ state กระจัดกระจาย",
-    },
-    {
-      title: "ส่วนที่มองไม่เห็นหายไป",
-      body:
-        "Environments, pipelines, observability, backups และ recovery มักไม่ถูกสร้าง เพราะเดโมไม่ต้องใช้ แต่ production ต้องมี",
-    },
-    {
-      title: "ไม่มีใครเฝ้าระบบ",
-      body:
-        "ถ้าไม่มี monitoring และ alerting outage แรกมักถูกเจอโดยลูกค้า และถ้า backup ไม่เคยทดสอบ incident ด้านข้อมูลอาจแก้กลับไม่ได้",
-    },
-  ],
-  frameworkPillars: [
-    ["01", "Assess", "รีวิว 40+ checkpoints ด้าน security, architecture, infrastructure และ operations พร้อม score และรายงานภายใน 48 ชั่วโมง"],
-    ["02", "Harden", "แก้ security: rotate secrets, enforce authorization, validate input, patch dependencies และใส่ rate limit"],
-    ["03", "Deploy", "ทำ container, infrastructure-as-code, staging/production และ CI/CD พร้อม rollback"],
-    ["04", "Observe", "ติดตั้ง error tracking, structured logs, metrics, uptime checks และ alert ที่มีคนรับผิดชอบ"],
-    ["05", "Protect", "ตั้ง backup อัตโนมัติ ทดสอบ restore และทำ disaster recovery runbook"],
-    ["06", "Support", "ดูแล production พร้อม SLA: monitoring response, security patch, cost review และรายงานรายเดือน"],
-  ].map(([number, title, body]) => ({ number, title, body })),
-  services: [
-    ["Production Readiness Assessment", "/production-readiness-assessment", "รีวิว 40+ checkpoints พร้อม score และรายงานภายใน 48 ชั่วโมง"],
-    ["Architecture Review", "/architecture-review", "ทำแผนที่สิ่งที่ AI สร้างจริง หาเพดานของระบบ และวางทางวิวัฒน์ต่อ"],
-    ["Production Checklist", "/production-readiness-checklist-service", "ลงมือทำและ verify readiness items ไม่ใช่แค่ส่ง checklist"],
-    ["Security Audit", "/ai-security-audit", "ตรวจ OWASP Top 10 + LLM Top 10 สำหรับโค้ดที่สร้างด้วย AI พร้อม verified fixes"],
-    ["Docker & Containerization", "/docker-deployment", "ทำ image ที่ปลอดภัย เบา และ build ซ้ำได้สำหรับทุก stack"],
-    ["Cloud Deployment", "/cloud-deployment-services", "วาง AWS, Azure, GCP หรือ DigitalOcean infrastructure ที่เหมาะกับ workload"],
-    ["Kubernetes Deployment", "/kubernetes-deployment", "Production cluster พร้อม GitOps และ autoscaling เมื่อคุณต้องใช้จริง"],
-    ["CI/CD Pipeline", "/ci-cd-pipeline-setup", "ทดสอบ build deploy และ rollback อัตโนมัติ"],
-    ["Monitoring & Logging", "/monitoring-logging-setup", "รู้ปัญหาก่อนผู้ใช้ ด้วย errors, uptime, metrics และ alerts ที่ไม่รบกวนเกินจำเป็น"],
-    ["Backup & Disaster Recovery", "/backup-disaster-recovery", "backup อัตโนมัติ ทดสอบ restore และ runbook สำหรับวันที่แย่ที่สุด"],
-    ["Performance Optimization", "/performance-optimization", "profile, fix และพิสูจน์ผล ทั้ง queries, caching และ Core Web Vitals"],
-    ["Cloud Cost Optimization", "/cloud-cost-optimization", "ลดค่า cloud โดยไม่แลกกับ reliability"],
-    ["Documentation & Handover", "/documentation-handover", "runbooks, architecture docs และแพ็กเกจส่งมอบที่พร้อมตรวจสอบ"],
-    ["Ongoing Production Support", "/ongoing-production-support", "ดูแล production ต่อเนื่องแบบมี SLA ในราคาเหมาจ่ายรายเดือน"],
-  ].map(([name, href, blurb]) => ({ name, href, blurb })),
-  workflow: [
-    ["1", "ประเมินฟรี", "แชร์ repository access ได้พร้อม NDA ภายใน 48 ชั่วโมงคุณจะได้ score และ findings แบบจัดลำดับความสำคัญ"],
-    ["2", "ข้อเสนอ Fixed-Scope", "แผนงานชัดเจนว่าแก้อะไร สร้างอะไร ตรวจอะไร ใช้เวลาเท่าไหร่ และราคาเท่าไหร่"],
-    ["3", "Harden & Deploy", "แก้ security, containerization, infrastructure และ CI/CD โดยปกติใช้ 2-6 สัปดาห์พร้อมเดโมทุกสัปดาห์"],
-    ["4", "Launch & Operate", "go-live พร้อม monitoring จากนั้นส่งมอบเอกสารและดูแลต่อเนื่องแบบมี SLA ได้"],
-  ].map(([step, title, body]) => ({ step, title, body })),
-  beforeAfter: [
-    ["Security", "Secrets อยู่ในโค้ด ไม่มี authorization checks", "Secrets อยู่ใน vault, access control ครบ, CI scan security"],
-    ["Hosting", "Preview URL หรือ workspace host", "Cloud infrastructure ที่คุณเป็นเจ้าของ พร้อม staging + production"],
-    ["Deployment", "Manual และ rollback ยาก", "Automated pipeline, zero-downtime, rollback ได้"],
-    ["Visibility", "ลูกค้ารู้ก่อนเมื่อระบบล่ม", "มี error tracking, uptime alerts และ dashboard"],
-    ["Data safety", "ไม่มี backup หรือไม่เคยทดสอบ restore", "backup อัตโนมัติ ทดสอบ restore และมี recovery runbook"],
-    ["Operations", "Founder ต้องตอบตอนตีสอง", "มี SLA support, runbooks และรายงานรายเดือน"],
-  ].map(([dimension, before, after]) => ({ dimension, before, after })),
-  industries: [
-    ["SaaS & Startups", "จาก AI-built MVP สู่แพลตฟอร์มที่นักลงทุนและลูกค้าองค์กรไว้ใจ"],
-    ["E-commerce", "ความเสถียร performance และ payment flow ที่ downtime คือรายได้ที่หายไป"],
-    ["Fintech", "security hardening, audit trail และ data protection ตามความคาดหวังด้าน compliance"],
-    ["โรงงานและ SME ไทย", "ระบบที่สร้างเองถูกเชื่อมกับ ERP ฐานข้อมูล และอุปกรณ์หน้างาน พร้อมคนดูแลต่อเนื่อง"],
-    ["Internal Tools & IT", "เปลี่ยนแอปที่แต่ละแผนกสร้างด้วย AI ให้ IT รับช่วงดูแลได้อย่างปลอดภัย"],
-    ["Agencies & Software Houses", "ทีม production engineering แบบ white-label หลังบ้านให้การส่งมอบลูกค้า"],
-  ].map(([name, body]) => ({ name, body })),
-  faq: [
-    ["ทุกวันนี้ใช้ AI สร้างระบบเองได้แล้ว ทำไมต้องจ้างเรา?", "สร้างด้วย AI ต่อไปได้เลย เพราะเร็วจริง แต่สิ่งที่ AI ไม่ได้ให้คือความรับผิดชอบ ทั้งการตรวจว่าโค้ดปลอดภัย การเชื่อมกับ ERP ฐานข้อมูล และอุปกรณ์เดิม และคนที่คอย backup อัปเดต และดูแลให้ระบบรันได้ทุกวัน ส่วนนี้คือสิ่งที่เราให้บริการ"],
-    ["AI Production Partner คือใคร?", "เป็นบริการของ บริษัท โกอะลอง จำกัด (GO Along) software house ในสมุทรปราการ ที่รับทำระบบ เว็บ แอป และดูแล network, server, backup ให้ธุรกิจไทย เราเริ่มจากระบบที่คุณสร้างไว้แล้ว ทำให้ใช้งานจริงได้ และดูแลต่อ"],
-    ["ตรวจระบบ (AI App Rescue) ได้อะไรบ้าง?", "รายงานช่องโหว่และจุดเสี่ยงจากการตรวจ 40+ จุด พร้อม Production Readiness Score และแผนแก้ไขแบบราคาเหมา รู้ผลภายใน 48 ชั่วโมงหลังได้สิทธิ์เข้าถึงโค้ด"],
-    ["เชื่อมกับ ERP หรือฐานข้อมูลเดิมได้ไหม?", "ได้ เราเชื่อมกับ ERP โปรแกรมบัญชี SQL Server, MySQL, PostgreSQL, LINE OA, e-Tax Invoice, payment gateway และอุปกรณ์หน้างาน เช่น เครื่องสแกนบาร์โค้ดและ handheld"],
-    ["Care Plan รายเดือนดูแลอะไรบ้าง?", "Hosting บน cloud หรือ server ในองค์กร, monitoring แจ้งเตือนผ่าน LINE/อีเมล, backup อัตโนมัติพร้อมทดสอบกู้คืน, security patch, firewall, SSL และรายงานรายเดือน"],
-    ["แอปที่สร้างด้วย AI ใช้ Production ได้จริงไหม?", "ได้ โค้ดทำงานจริงอยู่แล้ว ช่องว่างคือ production layer รอบ ๆ เช่น security, infrastructure, observability และ recovery"],
-    ["ค่าใช้จ่ายประมาณเท่าไหร่?", "เริ่มจากประเมินฟรีภายใน 48 ชั่วโมง จากนั้นให้ fixed-price proposal ตาม gap จริง งานทั่วไปใช้ 2-6 สัปดาห์"],
-    ["Production Readiness Assessment คืออะไร?", "การรีวิว 40+ checkpoints ด้าน security, architecture, infrastructure, delivery และ operations พร้อม score และ roadmap"],
-    ["คุณมาแทน developer หรือ AI tools ของเราไหม?", "ไม่ใช่ ทีมคุณยังสร้าง product ต่อได้เร็วเหมือนเดิม เรารับผิดชอบ production layer ให้ปลอดภัยและดูแลได้"],
-    ["รองรับ stack อะไรบ้าง?", "รองรับ Cursor, Claude Code, Lovable, Replit, Bolt, v0, Windsurf และ stack เช่น Next.js, React, Node.js, Python, .NET, Go, Vue, SvelteKit"],
-  ].map(([question, answer]) => ({ question, answer })),
-  trustSignals: [
-    ["40+", "checkpoints ในทุก production assessment"],
-    ["48h", "จาก repository access ถึงรายงาน findings"],
-    ["30-60%", "ลด cloud cost ได้บ่อยหลัง optimization"],
-    ["100%", "infrastructure ยังเป็นของคุณ ไม่มี lock-in"],
-  ].map(([metric, label]) => ({ metric, label })),
-};
 
 export function generateMetadata(): Metadata {
   return enMetadata;
 }
 
 export function HomeContent({ locale = "en" }: { locale?: Locale }) {
-  const dict = ui(locale);
+  const t = locale === "th" ? th : en;
+  const offers = locale === "th" ? coreOffersTh : coreOffers;
   const path = (href: string) => localePath(locale, href);
-  const localized = locale === "th";
-  const copy = localized ? homeTh : null;
-  const latestArticles = blogArticles.slice(0, 3);
-  const pagePainPoints = copy?.painPoints ?? painPoints;
-  const pageWhyAiAppsFail = copy?.whyAiAppsFail ?? whyAiAppsFail;
-  const pageFrameworkPillars = copy?.frameworkPillars ?? frameworkPillars;
-  const pageServices = copy?.services ?? services;
-  const pageCoreOffers = localized ? coreOffersTh : coreOffers;
-  const pageWorkflow = copy?.workflow ?? workflow;
-  const pageBeforeAfter = copy?.beforeAfter ?? beforeAfter;
-  const pageIndustries = copy?.industries ?? industries;
-  const pageFaq = copy?.faq ?? homeFaq;
-  const pageTrustSignals = copy?.trustSignals ?? trustSignals;
-  const pageSections = copy?.sections;
-  const pageHero = copy?.hero;
 
   return (
-    <>
-      {/* 1. Hero */}
+    <HomeMotion>
+      {/* Hero */}
       <section
         aria-labelledby="hero-heading"
-        className="relative overflow-hidden border-b border-mint-200"
+        className="relative overflow-hidden bg-gradient-to-b from-mint-50 via-white to-white"
       >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(134,214,170,0.28),transparent_60%)]"
-        />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="inline-flex items-center gap-2 rounded-full border border-mint-300 bg-mint-50 px-4 py-1.5 text-sm text-slate-600">
-              <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-accent-400" />
-              {pageHero?.pill ??
-                "For teams building with Cursor · Claude Code · Lovable · Replit · Bolt"}
-            </p>
-            <h1
-              id="hero-heading"
-              className="mt-8 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl"
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div
+            data-blob
+            className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-accent-200/60 blur-3xl sm:h-[28rem] sm:w-[28rem]"
+          />
+          <div
+            data-blob
+            className="absolute -right-20 top-24 h-72 w-72 rounded-full bg-mint-300/50 blur-3xl sm:h-96 sm:w-96"
+          />
+          <div
+            data-blob
+            className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-accent-100 blur-3xl"
+          />
+        </div>
+
+        <div className="relative mx-auto max-w-5xl px-4 pb-16 pt-16 text-center sm:px-6 sm:pb-20 sm:pt-24">
+          <p
+            data-hero
+            className="inline-flex items-center gap-2 rounded-full border border-mint-300 bg-white/80 px-4 py-1.5 text-sm font-medium text-accent-700 backdrop-blur"
+          >
+            <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-accent-500" />
+            {t.hero.pill}
+          </p>
+          <h1
+            id="hero-heading"
+            className="mt-8 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl sm:leading-tight"
+          >
+            <span data-hero className="block">
+              {t.hero.titleA}
+            </span>
+            <span data-hero className="block text-accent-600">
+              {t.hero.titleB}
+            </span>
+          </h1>
+          <p data-hero className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-600">
+            {t.hero.sub}
+          </p>
+          <div
+            data-hero
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
+            <Link
+              href={path(site.primaryCta.href)}
+              className="w-full rounded-full bg-accent-500 px-8 py-3.5 font-semibold text-accent-950 shadow-[0_8px_24px_-10px_rgba(35,137,90,0.6)] transition hover:-translate-y-0.5 hover:bg-accent-400 sm:w-auto"
             >
-              {pageHero?.titleA ?? "Turn AI-generated applications into"}{" "}
-              <span className="block text-accent-600">
-                {pageHero?.titleB ?? "production-ready systems"}
-              </span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-              {pageHero?.body ??
-                "You built it fast with AI. We make it secure, scalable, and enterprise-grade: security audits, Docker & Kubernetes, CI/CD, monitoring, and SLA-backed support."}{" "}
-              <span className="whitespace-nowrap font-medium text-accent-700">
-                {pageHero?.byline ?? "Built and run by GO Along."}
-              </span>
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href={path(site.primaryCta.href)}
-                className="w-full rounded-md bg-accent-500 px-8 py-4 text-base font-semibold text-accent-950 transition-colors hover:bg-accent-300 sm:w-auto"
-              >
-                {dict.cta.primary}
-              </Link>
-              <Link
-                href={path("/tools/production-score")}
-                className="w-full rounded-md border border-mint-300 px-8 py-4 text-base font-semibold text-slate-900 transition-colors hover:border-accent-400 hover:text-accent-700 sm:w-auto"
-              >
-                {dict.cta.freeScore}
-              </Link>
-            </div>
+              {t.hero.primary}
+            </Link>
+            <a
+              href="#services"
+              className="w-full rounded-full border border-mint-300 bg-white px-8 py-3.5 font-semibold text-slate-800 transition hover:border-accent-400 hover:text-accent-700 sm:w-auto"
+            >
+              {t.hero.secondary} ↓
+            </a>
           </div>
 
-          {/* AI builder logo strip */}
-          <div className="mx-auto mt-16 max-w-4xl">
-            <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-500">
-              {localized ? "ทำงานร่วมกับ AI stack ของคุณ" : "Works with your AI stack"}
-            </p>
-            <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-5">
-              {aiBuilders.map((tool) => (
-                <li
-                  key={tool.slug}
-                  className="flex items-center gap-2 text-slate-500 transition-colors hover:text-slate-700"
-                >
-                  <BrandLogo slug={tool.slug} label={tool.name} className="h-6 w-6" />
-                  <span className="text-sm font-medium">{tool.name}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Trust bar */}
-          <dl className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-8 lg:grid-cols-4">
-            {pageTrustSignals.map((signal) => (
-              <div key={signal.label} className="flex flex-col-reverse text-center">
-                <dt className="order-2 mt-2 block text-sm leading-6 text-slate-500">
-                  {signal.label}
-                </dt>
-                <dd className="text-3xl font-bold text-slate-900">{signal.metric}</dd>
+          <dl data-hero className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4">
+            {t.hero.stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col-reverse">
+                <dt className="mt-1 text-sm text-slate-500">{stat.label}</dt>
+                <dd className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                  <span data-count={stat.count}>{stat.count}</span>
+                  <span className="text-accent-600">{stat.suffix}</span>
+                </dd>
               </div>
             ))}
           </dl>
         </div>
+
+        <div data-reveal className="relative border-t border-mint-200 bg-white/60 py-8">
+          <p className="text-center text-xs font-semibold tracking-wide text-slate-500">
+            {t.hero.builtWith}
+          </p>
+          <ul className="mx-auto mt-4 flex max-w-4xl flex-wrap items-center justify-center gap-x-8 gap-y-4 px-4">
+            {aiBuilders.map((tool) => (
+              <li key={tool.slug} className="flex items-center gap-2 text-slate-500">
+                <BrandLogo slug={tool.slug} label={tool.name} className="h-5 w-5" />
+                <span className="text-sm font-medium">{tool.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
-      {/* 1b. Core offers */}
-      <section aria-labelledby="core-heading" id="services" className="border-b border-mint-200 py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
-              {pageSections?.core.eyebrow ?? "Three core services"}
-            </p>
-            <h2
-              id="core-heading"
-              className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
-            >
-              {pageSections?.core.title ??
-                "Audit, integrate, and look after the system you built with AI"}
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              {pageSections?.core.lede ??
-                "Start with a fixed-price audit, connect it to the systems you already run, then let us look after it every month. Pick only what you need."}
-            </p>
-          </div>
-          <ol className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
-            {pageCoreOffers.map((offer, index) => (
+      {/* The gap */}
+      <section aria-labelledby="why-heading" className="bg-mint-50/70 py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <Heading eyebrow={t.why.eyebrow} title={t.why.title} />
+          <ol data-stagger className="mt-12 grid gap-4 md:grid-cols-3">
+            {t.why.items.map((item, index) => (
+              <li key={item.title} className="rounded-2xl border border-mint-200 bg-white p-6">
+                <span className="font-mono text-sm font-semibold text-accent-600">
+                  0{index + 1}
+                </span>
+                <h3 className="mt-2 text-lg font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-2 leading-7 text-slate-600">{item.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Core offers */}
+      <section aria-labelledby="services-heading" id="services" className="scroll-mt-20 py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <Heading eyebrow={t.offers.eyebrow} title={t.offers.title} lede={t.offers.lede} />
+          <ol data-stagger className="mt-12 grid gap-6 lg:grid-cols-3">
+            {offers.map((offer, index) => (
               <li
                 key={offer.id}
                 id={offer.id}
-                className="flex flex-col rounded-2xl border border-mint-200 bg-gradient-to-b from-mint-50 to-white p-7 shadow-[0_1px_2px_rgba(10,42,28,0.04),0_8px_24px_-12px_rgba(27,110,72,0.18)]"
+                className="group flex flex-col rounded-3xl border border-mint-200 bg-white p-7 shadow-[0_1px_2px_rgba(10,42,28,0.04),0_12px_32px_-18px_rgba(27,110,72,0.25)] transition duration-300 hover:-translate-y-1 hover:border-accent-300 hover:shadow-[0_20px_40px_-20px_rgba(27,110,72,0.35)]"
               >
-                <div className="flex items-center justify-between gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-200 font-mono font-bold text-accent-900">
+                <div className="flex items-center justify-between">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-100 font-mono text-lg font-bold text-accent-800 transition group-hover:bg-accent-200">
                     {index + 1}
                   </span>
-                  <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-accent-700 ring-1 ring-mint-300">
+                  <span className="rounded-full bg-mint-50 px-3 py-1 text-xs font-semibold text-accent-700 ring-1 ring-mint-200">
                     {offer.tag}
                   </span>
                 </div>
-                <h3 className="mt-5 text-xl font-bold text-slate-900">{offer.name}</h3>
-                <p className="mt-2 font-medium text-accent-700">{offer.hook}</p>
-                <p className="mt-3 leading-7 text-slate-600">{offer.body}</p>
-                <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-6 text-slate-700">
+                <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  {offer.label}
+                </p>
+                <h3 className="mt-1 text-2xl font-bold text-slate-900">{offer.name}</h3>
+                <p className="mt-3 leading-7 text-slate-600">{offer.hook}</p>
+                <ul className="mt-6 flex-1 space-y-3 border-t border-mint-200 pt-6 text-sm leading-6 text-slate-700">
                   {offer.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-2.5">
-                      <span aria-hidden="true" className="mt-0.5 text-accent-600">
+                    <li key={bullet} className="flex gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-100 text-[11px] text-accent-700"
+                      >
                         ✓
                       </span>
                       {bullet}
@@ -442,462 +370,100 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
                 </ul>
                 <Link
                   href={path(offer.cta.href)}
-                  className="mt-7 block rounded-lg bg-accent-500 px-5 py-3 text-center font-semibold text-accent-950 transition-colors hover:bg-accent-300"
+                  className="mt-8 block rounded-full bg-mint-50 px-5 py-3 text-center font-semibold text-accent-800 ring-1 ring-mint-300 transition group-hover:bg-accent-500 group-hover:text-accent-950 group-hover:ring-accent-500"
                 >
-                  {offer.cta.label}
+                  {offer.cta.label} →
                 </Link>
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* 2. Pain points */}
-      <section aria-labelledby="pain-heading" className="py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.pain.eyebrow ?? "Sound familiar?"}
-            title={
-              pageSections?.pain.title ??
-              "Your AI-built app works. You just can't trust it yet."
-            }
-            lede={
-              pageSections?.pain.lede ??
-              "Every team that ships with AI tools hits the same wall between “it works” and “it's ready”."
-            }
-          />
-          <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2">
-            {pagePainPoints.map((point) => (
-              <div
-                key={point.title}
-                className="rounded-xl border border-mint-200 bg-mint-50 p-6"
-              >
-                <h3 className="font-semibold text-slate-900">{point.title}</h3>
-                <p className="mt-2 leading-7 text-slate-600">{point.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Why AI apps fail */}
-      <section
-        aria-labelledby="why-fail-heading"
-        className="border-y border-mint-200 bg-mint-50/70 py-24"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.root.eyebrow ?? "The root causes"}
-            title={pageSections?.root.title ?? "Why AI apps fail in production"}
-            lede={
-              pageSections?.root.lede ??
-              "Not because AI writes bad code — because production readiness was never in the prompt. The failures are systematic, which means prevention is too."
-            }
-          />
-          <ol className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2">
-            {pageWhyAiAppsFail.map((reason, index) => (
-              <li
-                key={reason.title}
-                className="rounded-xl border border-mint-200 bg-white p-6"
-              >
-                <span className="font-mono text-sm text-accent-600">
-                  {localized ? "สาเหตุ" : "Cause"} {index + 1}
-                </span>
-                <h3 className="mt-2 font-semibold text-slate-900">{reason.title}</h3>
-                <p className="mt-2 leading-7 text-slate-600">{reason.body}</p>
-              </li>
-            ))}
-          </ol>
-          <p className="mx-auto mt-10 max-w-3xl text-center text-slate-500">
-            Deep dive:{" "}
+          <p data-reveal className="mt-10 text-center">
             <Link
-              href={path("/blog/why-ai-generated-apps-fail-in-production")}
-              className="text-accent-700 underline-offset-4 hover:underline"
+              href={path("/solutions")}
+              className="text-sm font-semibold text-accent-700 underline-offset-4 hover:underline"
             >
-              Why AI-Generated Apps Fail in Production (and How to Prevent It)
+              {t.offers.more} →
             </Link>
           </p>
         </div>
       </section>
 
-      {/* 4. Framework */}
-      <section aria-labelledby="framework-heading" id="framework" className="py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.framework.eyebrow ?? "Our method"}
-            title={
-              pageSections?.framework.title ??
-              "The Production Readiness Framework"
-            }
-            lede={
-              pageSections?.framework.lede ??
-              "Six pillars, applied in order, that take any AI-built application from prototype to production — measurably."
-            }
-          />
-          <div className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {pageFrameworkPillars.map((pillar) => (
-              <div
-                key={pillar.number}
-                className="rounded-xl border border-mint-200 bg-mint-50 p-6 transition-colors hover:border-accent-400"
-              >
-                <span className="font-mono text-2xl font-bold text-accent-600">
-                  {pillar.number}
-                </span>
-                <h3 className="mt-3 text-xl font-semibold text-slate-900">
-                  {pillar.title}
-                </h3>
-                <p className="mt-2 leading-7 text-slate-600">{pillar.body}</p>
-              </div>
-            ))}
+      {/* Steps */}
+      <section aria-labelledby="steps-heading" className="bg-mint-50/70 py-20 sm:py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <Heading eyebrow={t.steps.eyebrow} title={t.steps.title} />
+          <div className="relative mt-14">
+            <div
+              aria-hidden="true"
+              className="absolute left-[16.66%] right-[16.66%] top-6 hidden h-0.5 rounded bg-mint-200 md:block"
+            >
+              <div data-progress className="h-full origin-left rounded bg-accent-400" />
+            </div>
+            <ol data-stagger className="relative grid gap-8 md:grid-cols-3">
+              {t.steps.items.map((step, index) => (
+                <li key={step.title} className="text-center">
+                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border-4 border-mint-50 bg-accent-500 font-mono text-lg font-bold text-accent-950">
+                    {index + 1}
+                  </span>
+                  <h3 className="mt-5 text-lg font-semibold text-slate-900">{step.title}</h3>
+                  <p className="mx-auto mt-2 max-w-xs leading-7 text-slate-600">{step.body}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
-      {/* 5. Services */}
-      <section
-        aria-labelledby="services-heading"
-        id="all-services"
-        className="border-y border-mint-200 bg-mint-50/70 py-24"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.services.eyebrow ?? "What we do"}
-            title={pageSections?.services.title ?? "Production services, end to end"}
-            lede={
-              pageSections?.services.lede ??
-              "Everything between “the AI built it” and “customers rely on it” — as individual engagements or one package."
-            }
-          />
-          <div className="mx-auto mt-14 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {pageServices.map((service) => (
-              <Link
-                key={service.href}
-                href={path(service.href)}
-                className="group rounded-xl border border-mint-200 bg-white p-5 transition-colors hover:border-accent-400"
-              >
-                <h3 className="font-semibold text-slate-900 group-hover:text-accent-700">
-                  {service.name}
-                </h3>
-                <p className="mt-1.5 text-sm leading-6 text-slate-500">
-                  {service.blurb}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Workflow */}
-      <section aria-labelledby="workflow-heading" className="py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.workflow.eyebrow ?? "How it works"}
-            title={
-              pageSections?.workflow.title ??
-              "From first contact to stable production"
-            }
-            lede={
-              pageSections?.workflow.lede ??
-              "Fixed scope, weekly demos, no surprises — a workflow designed for founders and engineering leads who've been burned before."
-            }
-          />
-          <ol className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {pageWorkflow.map((phase) => (
-              <li
-                key={phase.step}
-                className="relative rounded-xl border border-mint-200 bg-mint-50 p-6"
-              >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-500 font-mono font-bold text-accent-950">
-                  {phase.step}
-                </span>
-                <h3 className="mt-4 font-semibold text-slate-900">{phase.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {phase.body}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* 7. Before vs After */}
-      <section
-        aria-labelledby="before-after-heading"
-        className="border-y border-mint-200 bg-mint-50/70 py-24"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.beforeAfter.eyebrow ?? "The transformation"}
-            title={
-              pageSections?.beforeAfter.title ??
-              "Before vs. after production readiness"
-            }
-          />
-          <div className="mx-auto mt-14 max-w-5xl overflow-x-auto rounded-xl border border-mint-200">
-            <table className="w-full min-w-[640px] text-left text-sm">
-              <caption className="sr-only">
-                {localized
-                  ? "ตารางเปรียบเทียบแอปที่สร้างด้วย AI ก่อนและหลังทำ production readiness"
-                  : "Comparison of an AI-built app before and after production readiness work"}
-              </caption>
-              <thead>
-                <tr className="border-b border-mint-200 bg-mint-50 text-slate-900">
-                  <th scope="col" className="px-6 py-4 font-semibold">
-                    {localized ? "มิติ" : "Dimension"}
-                  </th>
-                  <th scope="col" className="px-6 py-4 font-semibold text-red-600">
-                    {localized ? "ก่อน" : "Before"}
-                  </th>
-                  <th scope="col" className="px-6 py-4 font-semibold text-accent-700">
-                    {localized ? "หลัง" : "After"}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-mint-200 bg-white">
-                {pageBeforeAfter.map((row) => (
-                  <tr key={row.dimension}>
-                    <th scope="row" className="px-6 py-4 font-medium text-slate-900">
-                      {row.dimension}
-                    </th>
-                    <td className="px-6 py-4 text-slate-500">{row.before}</td>
-                    <td className="px-6 py-4 text-slate-700">{row.after}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* 7b. Case studies (renders only when a case study is published) */}
-      <CaseStudies locale={locale} />
-
-      {/* 8. Technology stack */}
-      <section aria-labelledby="stack-heading" className="py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.stack.eyebrow ?? "Technology"}
-            title={pageSections?.stack.title ?? "The stack we deploy and operate"}
-            lede={
-              pageSections?.stack.lede ??
-              "Boring, proven, and portable — chosen for your workload, owned by you."
-            }
-          />
-          <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {techStack.map((group) => (
-              <div
-                key={group.category}
-                className="rounded-xl border border-mint-200 bg-mint-50 p-6"
-              >
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                  {group.category}
-                </h3>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {group.items.map((item) => {
-                    const slug = techIconSlug[item];
-                    return (
-                      <li
-                        key={item}
-                        className="inline-flex items-center gap-1.5 rounded-md border border-mint-300 bg-white px-2.5 py-1 text-sm text-slate-700 transition-colors hover:border-accent-400 hover:text-slate-900"
-                      >
-                        {slug && (
-                          <BrandLogo
-                            slug={slug}
-                            label={item}
-                            className="h-4 w-4 text-slate-500"
-                          />
-                        )}
-                        {item}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Industries */}
-      <section
-        aria-labelledby="industries-heading"
-        className="border-y border-mint-200 bg-mint-50/70 py-24"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.industries.eyebrow ?? "Who we serve"}
-            title={
-              pageSections?.industries.title ??
-              "Industries we take to production"
-            }
-          />
-          <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {pageIndustries.map((industry) => (
-              <div
-                key={industry.name}
-                className="rounded-xl border border-mint-200 bg-white p-6"
-              >
-                <h3 className="font-semibold text-slate-900">{industry.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {industry.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 10. FAQ */}
-      <section aria-labelledby="faq-heading" className="py-24">
+      {/* FAQ */}
+      <section aria-labelledby="faq-heading" className="py-20 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="FAQ"
-            title={dict.common.faqHeading}
-          />
-          <div className="mt-14">
-            <FaqList items={pageFaq} />
+          <Heading eyebrow={t.faq.eyebrow} title={t.faq.title} />
+          <div data-reveal className="mt-12">
+            <FaqList items={t.faq.items} />
           </div>
         </div>
       </section>
 
-      {/* 11. Blog preview */}
-      <section
-        aria-labelledby="blog-heading"
-        className="border-y border-mint-200 bg-mint-50/70 py-24"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={pageSections?.blog.eyebrow ?? "From the blog"}
-            title={
-              pageSections?.blog.title ??
-              "Production engineering, written down"
-            }
-            lede={
-              pageSections?.blog.lede ??
-              "Guides on deploying, securing, and operating AI-built applications."
-            }
+      {/* Final CTA */}
+      <section aria-labelledby="cta-heading" id="contact" className="px-4 pb-24 sm:px-6">
+        <div
+          data-reveal
+          className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-accent-100 via-mint-100 to-white px-6 py-14 text-center ring-1 ring-mint-300 sm:px-12"
+        >
+          <div
+            aria-hidden="true"
+            data-blob
+            className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-accent-200/70 blur-3xl"
           />
-          <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
-            {latestArticles.map((article) => (
-              <article
-                key={article.slug}
-                className="flex flex-col rounded-xl border border-mint-200 bg-white p-6"
-              >
-                <p className="text-sm text-accent-600">{article.category}</p>
-                <h3 className="mt-2 font-semibold text-slate-900">
-                  <Link
-                    href={path(`/blog/${article.slug}`)}
-                    className="hover:text-accent-700"
-                  >
-                    {article.title}
-                  </Link>
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-6 text-slate-500">
-                  {article.description}
-                </p>
-                <p className="mt-4 text-xs text-slate-500">
-                  <time dateTime={article.date}>{article.date}</time> ·{" "}
-                  {article.readingMinutes} {dict.common.minRead}
-                </p>
-              </article>
-            ))}
-          </div>
-          <p className="mt-10 text-center">
+          <h2
+            id="cta-heading"
+            className="relative text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+          >
+            {t.cta.title}
+          </h2>
+          <p className="relative mx-auto mt-4 max-w-xl text-lg text-slate-600">{t.cta.body}</p>
+          <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href={path("/blog")}
-              className="font-semibold text-accent-700 underline-offset-4 hover:underline"
+              href={path(site.primaryCta.href)}
+              className="w-full rounded-full bg-accent-500 px-8 py-3.5 font-semibold text-accent-950 transition hover:-translate-y-0.5 hover:bg-accent-400 sm:w-auto"
             >
-              {pageSections?.blog.browse ?? "Browse all"} {blogArticles.length}{" "}
-              {localized ? "บทความ" : "articles"} →
+              {t.cta.button}
             </Link>
+            <a
+              href={site.phoneHref}
+              className="w-full rounded-full border border-mint-300 bg-white px-8 py-3.5 font-semibold text-slate-800 transition hover:border-accent-400 sm:w-auto"
+            >
+              {t.cta.callLabel} {site.phone}
+            </a>
+          </div>
+          <p className="relative mt-6 text-sm text-slate-600">
+            <a href={`mailto:${site.email}`} className="font-medium text-accent-700 hover:underline">
+              {site.email}
+            </a>
           </p>
         </div>
       </section>
-
-      {/* 12. CTA */}
-      <CtaBanner locale={locale} />
-
-      {/* 13. Contact */}
-      <section
-        aria-labelledby="contact-heading"
-        id="contact"
-        className="border-t border-mint-200 py-24"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
-                {pageSections?.contact.eyebrow ?? "Contact"}
-              </p>
-              <h2
-                id="contact-heading"
-                className="mt-3 text-3xl font-bold tracking-tight text-slate-900"
-              >
-                {pageSections?.contact.title ??
-                  "Talk to a production engineer — not a salesperson"}
-              </h2>
-              <p className="mt-4 leading-8 text-slate-600">
-                {pageSections?.contact.body ??
-                  "Tell us what you built and where it needs to run. You'll get a straight technical answer within one business day, and a free production assessment if you want one. NDA available before any code is shared."}
-              </p>
-              <dl className="mt-8 space-y-4 text-slate-600">
-                <div>
-                  <dt className="text-sm font-semibold text-slate-500">Email</dt>
-                  <dd>
-                    <a
-                      href={`mailto:${site.email}`}
-                      className="text-accent-700 hover:underline"
-                    >
-                      {site.email}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-semibold text-slate-500">
-                    {pageSections?.contact.response ?? "Response time"}
-                  </dt>
-                  <dd>
-                    {pageSections?.contact.responseBody ??
-                      "Within one business day — usually much faster."}
-                  </dd>
-                </div>
-              </dl>
-            </div>
-            <div className="rounded-xl border border-mint-200 bg-mint-50 p-8">
-              <h3 className="text-xl font-semibold text-slate-900">
-                {pageSections?.contact.cardTitle ?? "Start with the free assessment"}
-              </h3>
-              <ul className="mt-4 space-y-3 text-slate-600">
-                {(pageSections?.contact.bullets ?? [
-                  "Production Readiness Score across 40+ checkpoints",
-                  "Prioritized findings report within 48 hours",
-                  "Fixed-price proposal — no hourly billing, no obligation",
-                ]).map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span aria-hidden="true" className="text-accent-600">
-                      ✓
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href={path(site.primaryCta.href)}
-                className="mt-8 block rounded-md bg-accent-500 px-6 py-3 text-center font-semibold text-accent-950 transition-colors hover:bg-accent-300"
-              >
-                {dict.cta.primary}
-              </Link>
-              <Link
-                href={path(site.secondaryCta.href)}
-                className="mt-3 block rounded-md border border-mint-300 px-6 py-3 text-center font-semibold text-slate-900 transition-colors hover:border-accent-400 hover:text-accent-700"
-              >
-                {dict.cta.secondary}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    </HomeMotion>
   );
 }
 
@@ -907,10 +473,10 @@ export default function HomePage() {
 
 export function thaiHomeMetadata(): Metadata {
   return pageMetadata({
-    title: homeTh.metadata.title,
-    description: homeTh.metadata.description,
-    keywords: homeTh.metadata.keywords,
+    title: homeThMetadata.title,
+    description: homeThMetadata.description,
     path: "/",
     locale: "th",
+    keywords: homeThMetadata.keywords,
   });
 }

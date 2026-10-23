@@ -218,13 +218,14 @@ export const trustSignals = [
 /**
  * The three core GO Along offers shown right under the hero — the
  * entry-point audit, integration work, and the recurring care plan.
+ * Kept deliberately short: one hook line and three bullets each.
  */
 export type CoreOffer = {
   id: string;
+  label: string;
   name: string;
   tag: string;
   hook: string;
-  body: string;
   bullets: string[];
   cta: { label: string; href: string };
 };
@@ -232,45 +233,40 @@ export type CoreOffer = {
 export const coreOffers: CoreOffer[] = [
   {
     id: "rescue",
-    name: "AI App Rescue / Production Audit",
-    tag: "Fixed price · findings in 48 hours",
-    hook: "Is the system you built with AI safe to put in front of real users?",
-    body: "Send us the app you generated with Cursor, Claude Code, Lovable, Bolt, or ChatGPT. You get a report of vulnerabilities, risks, and what must be fixed before go-live — ranked by urgency.",
+    label: "AI App Rescue",
+    name: "Audit before go-live",
+    tag: "Fixed price",
+    hook: "Find out if your AI-built system is safe for real users.",
     bullets: [
-      "40+ checkpoints: security, data integrity, user permissions, backups",
-      "Production Readiness Score with a plain-language report",
-      "Fixed-price fix plan — no obligation to hire us for it",
-      "NDA signed before we look at any code",
+      "40+ checks: security, data, permissions, backups",
+      "Clear report and a fixed-price fix plan",
+      "NDA signed before we see any code",
     ],
     cta: { label: "Request an audit", href: "/book-assessment" },
   },
   {
     id: "integration",
-    name: "System Integration",
-    tag: "Project-based · scoped quote",
-    hook: "The part AI can't do for you.",
-    body: "AI can't reach your servers, your existing database, or the devices on your shop floor. We can — and we connect the new system to what you already run so data flows correctly.",
+    label: "System Integration",
+    name: "Connect to what you run",
+    tag: "Project",
+    hook: "The part AI can't reach: your servers, data, and devices.",
     bullets: [
-      "Existing ERP and accounting systems",
-      "On-premise SQL Server, MySQL, PostgreSQL",
+      "ERP, accounting, on-premise SQL Server",
       "LINE OA, e-Tax Invoice, payment gateways",
-      "Barcode scanners, handhelds, scales, supplier APIs",
-      "Data migration and sync with reconciliation checks",
+      "Barcode scanners, handhelds, shop-floor devices",
     ],
     cta: { label: "Discuss an integration", href: "/contact?type=integration" },
   },
   {
     id: "care-plan",
-    name: "Managed Hosting + Care Plan",
-    tag: "Monthly plan · recurring",
-    hook: "We look after the system you built.",
-    body: "A self-built system still needs a home, someone watching it, and backups that actually restore. GO Along already runs network, security, server and backup infrastructure for clients — your app joins it.",
+    label: "Managed Hosting + Care Plan",
+    name: "We look after it monthly",
+    tag: "Monthly",
+    hook: "Hosting, monitoring, and backups that actually restore.",
     bullets: [
-      "Hosting on cloud or your own on-premise server",
-      "Monitoring with alerts to LINE or email",
-      "Automated backups with tested restores",
-      "Security patches, firewall (Fortinet FortiGate), SSL",
-      "Monthly report and a team that answers when it breaks",
+      "Cloud or your own on-premise server",
+      "Alerts to LINE or email when something breaks",
+      "Tested backups, security patches, monthly report",
     ],
     cta: { label: "Ask about the Care Plan", href: "/contact?type=support" },
   },
@@ -279,45 +275,40 @@ export const coreOffers: CoreOffer[] = [
 export const coreOffersTh: CoreOffer[] = [
   {
     id: "rescue",
-    name: "AI App Rescue / ตรวจระบบก่อนใช้งานจริง",
-    tag: "ราคาเหมา · รู้ผลภายใน 48 ชม.",
-    hook: "ระบบที่สร้างด้วย AI เอาขึ้นใช้งานจริงได้หรือยัง?",
-    body: "ส่งระบบที่คุณสร้างด้วย ChatGPT, Claude Code, Cursor, Lovable หรือ Bolt มาให้เราตรวจ คุณจะได้รายงานช่องโหว่ จุดเสี่ยง และสิ่งที่ต้องแก้ก่อนใช้งานจริง เรียงตามความเร่งด่วน",
+    label: "AI App Rescue",
+    name: "ตรวจระบบก่อนใช้จริง",
+    tag: "ราคาเหมา",
+    hook: "รู้ว่าระบบที่ AI สร้าง พร้อมให้คนใช้จริงหรือยัง",
     bullets: [
-      "ตรวจ 40+ จุด ทั้งความปลอดภัย ความถูกต้องของข้อมูล สิทธิ์ผู้ใช้ และ backup",
-      "ได้ Production Readiness Score พร้อมรายงานภาษาไทยที่อ่านเข้าใจง่าย",
-      "แผนแก้ไขพร้อมราคาเหมา ไม่บังคับต้องจ้างเราแก้ต่อ",
-      "เซ็น NDA ก่อนเปิดดูโค้ดทุกครั้ง",
+      "ตรวจ 40+ จุด ความปลอดภัย ข้อมูล สิทธิ์ผู้ใช้",
+      "รายงานภาษาไทย พร้อมแผนแก้แบบราคาเหมา",
+      "เซ็น NDA ก่อนเปิดดูโค้ด",
     ],
     cta: { label: "ขอตรวจระบบ", href: "/book-assessment" },
   },
   {
     id: "integration",
-    name: "เชื่อมต่อระบบ (System Integration)",
-    tag: "งานโปรเจกต์ · ราคาตามขอบเขตงาน",
-    hook: "ส่วนที่ AI ทำแทนไม่ได้",
-    body: "AI เข้าไม่ถึง server ฐานข้อมูลเดิม หรืออุปกรณ์หน้างานของคุณ แต่ทีมเราเข้าถึงได้ เราเชื่อมระบบใหม่เข้ากับระบบที่ใช้อยู่ ให้ข้อมูลไหลถูกต้องครบถ้วน",
+    label: "System Integration",
+    name: "เชื่อมต่อระบบเดิม",
+    tag: "งานโปรเจกต์",
+    hook: "ส่วนที่ AI เข้าไม่ถึง: server ข้อมูล และอุปกรณ์ของคุณ",
     bullets: [
-      "ERP และโปรแกรมบัญชีที่ใช้อยู่เดิม",
-      "ฐานข้อมูลในองค์กร SQL Server, MySQL, PostgreSQL",
-      "LINE OA, ใบกำกับภาษีอิเล็กทรอนิกส์ (e-Tax Invoice), payment gateway",
-      "เครื่องสแกนบาร์โค้ด handheld เครื่องชั่ง และ API ของซัพพลายเออร์",
-      "ย้ายและ sync ข้อมูล พร้อมตรวจกระทบยอดให้ตรงกัน",
+      "ERP โปรแกรมบัญชี และ SQL Server ในองค์กร",
+      "LINE OA, e-Tax Invoice, payment gateway",
+      "เครื่องสแกน handheld และอุปกรณ์หน้างาน",
     ],
     cta: { label: "ปรึกษางานเชื่อมระบบ", href: "/contact?type=integration" },
   },
   {
     id: "care-plan",
-    name: "Managed Hosting + Care Plan รายเดือน",
-    tag: "แพ็กเกจรายเดือน · ดูแลต่อเนื่อง",
-    hook: "เราดูแลระบบที่คุณสร้าง",
-    body: "ระบบที่สร้างเองต้องมีที่วาง มีคนเฝ้า และมี backup ที่กู้คืนได้จริง โกอะลองดูแล network, security, server และ backup ให้ลูกค้าองค์กรอยู่แล้ว ระบบของคุณเข้ามาอยู่ในมาตรฐานเดียวกันได้ทันที",
+    label: "Managed Hosting + Care Plan",
+    name: "ดูแลระบบรายเดือน",
+    tag: "รายเดือน",
+    hook: "มีที่วาง มีคนเฝ้า และมี backup ที่กู้คืนได้จริง",
     bullets: [
-      "Hosting บน cloud หรือ server ในองค์กรของคุณเอง",
-      "Monitoring พร้อมแจ้งเตือนผ่าน LINE หรืออีเมล",
-      "Backup อัตโนมัติ และทดสอบกู้คืนจริงเป็นประจำ",
-      "อัปเดต security patch, firewall (Fortinet FortiGate), SSL",
-      "รายงานรายเดือน และทีมที่รับเรื่องเมื่อระบบมีปัญหา",
+      "Hosting บน cloud หรือ server ของคุณเอง",
+      "แจ้งเตือนผ่าน LINE ทันทีเมื่อระบบมีปัญหา",
+      "Backup ทดสอบกู้คืน, security patch, รายงานรายเดือน",
     ],
     cta: { label: "สอบถาม Care Plan", href: "/contact?type=support" },
   },

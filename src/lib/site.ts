@@ -12,7 +12,9 @@ export const site = {
   tagline: "AI builds it. We make it production-ready — and stay accountable for it.",
   description:
     "AI Production Partner transforms AI-generated applications from tools like Cursor, Claude Code, Lovable, Replit, and Bolt into secure, scalable, enterprise-grade production systems. Production readiness assessments, security audits, Docker and Kubernetes deployment, CI/CD, monitoring, and ongoing support.",
-  email: "amnart.gl@gmail.com",
+  email: "sales@goalong.co.th",
+  phone: "085 608 3298",
+  phoneHref: "tel:+66856083298",
   twitter: "@aiprodpartner",
   linkedin: "https://www.linkedin.com/company/ai-production-partner",
   github: "https://github.com/ai-production-partner",
