@@ -56,26 +56,35 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-ink-700/60 bg-ink-900">
+    <footer className="border-t border-mint-200 bg-mint-50">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
-            <p className="flex items-center gap-2 font-semibold text-white">
+            <p className="flex items-center gap-2 font-semibold text-slate-900">
               <span
                 aria-hidden="true"
-                className="flex h-8 w-8 items-center justify-center rounded-md bg-accent-500 font-mono text-sm font-bold text-ink-950"
+                className="flex h-8 w-8 items-center justify-center rounded-md bg-accent-500 font-mono text-sm font-bold text-accent-950"
               >
                 AP
               </span>
               {site.name}
             </p>
-            <p className="mt-4 max-w-sm text-sm leading-6 text-slate-400">
+            <p className="mt-4 max-w-sm text-sm leading-6 text-slate-500">
               {dict.footer.tagline}
             </p>
-            <p className="mt-4 text-sm text-slate-400">
+            <p className="mt-4 text-sm text-slate-500">
+              {locale === "th" ? "ให้บริการโดย" : "A service of"}{" "}
+              <a
+                href={site.parentUrl}
+                className="font-semibold text-accent-700 hover:underline"
+              >
+                {locale === "th" ? "บริษัท โกอะลอง จำกัด" : "GO Along Co., Ltd."}
+              </a>
+            </p>
+            <p className="mt-2 text-sm text-slate-500">
               <a
                 href={`mailto:${site.email}`}
-                className="hover:text-accent-300"
+                className="hover:text-accent-700"
               >
                 {site.email}
               </a>
@@ -84,15 +93,15 @@ export default function Footer() {
 
           {footerColumns.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
-              <h2 className="text-sm font-semibold text-white">
+              <h2 className="text-sm font-semibold text-slate-900">
                 {column.heading}
               </h2>
-              <ul className="mt-4 space-y-2 text-sm text-slate-400">
+              <ul className="mt-4 space-y-2 text-sm text-slate-500">
                 {column.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={localePath(locale, link.href)}
-                      className="transition-colors hover:text-accent-300"
+                      className="transition-colors hover:text-accent-700"
                     >
                       {link.label}
                     </Link>
@@ -103,7 +112,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-ink-700/60 pt-6 text-xs text-slate-500 sm:flex-row sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-mint-200 pt-6 text-xs text-slate-500 sm:flex-row sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.legalName} {dict.footer.rights}
           </p>

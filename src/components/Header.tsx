@@ -26,14 +26,14 @@ export default function Header() {
   ];
 
   const languageSwitch = (
-    <div className="inline-flex rounded-md border border-ink-600 bg-ink-900 p-0.5 text-xs font-semibold text-slate-300">
+    <div className="inline-flex rounded-md border border-mint-300 bg-mint-50 p-0.5 text-xs font-semibold text-slate-600">
       <Link
         href={localePath("en", neutralPath(pathname))}
         aria-label="Switch to English"
         className={`rounded px-2.5 py-1.5 transition-colors ${
           locale === "en"
-            ? "bg-accent-500 text-ink-950"
-            : "hover:text-accent-300"
+            ? "bg-accent-500 text-accent-950"
+            : "hover:text-accent-700"
         }`}
       >
         EN
@@ -43,8 +43,8 @@ export default function Header() {
         aria-label="เปลี่ยนเป็นภาษาไทย"
         className={`rounded px-2.5 py-1.5 transition-colors ${
           locale === "th"
-            ? "bg-accent-500 text-ink-950"
-            : "hover:text-accent-300"
+            ? "bg-accent-500 text-accent-950"
+            : "hover:text-accent-700"
         }`}
       >
         TH
@@ -53,30 +53,34 @@ export default function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink-700/60 bg-ink-950/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-mint-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href={localePath(locale, "/")}
-          className="flex items-center gap-2 font-semibold tracking-tight text-white"
+          className="flex items-center gap-2 font-semibold tracking-tight text-slate-900"
           aria-label={`${site.name} — home`}
         >
           <span
             aria-hidden="true"
-            className="flex h-8 w-8 items-center justify-center rounded-md bg-accent-500 font-mono text-sm font-bold text-ink-950"
+            className="flex h-8 w-8 items-center justify-center rounded-md bg-accent-500 font-mono text-sm font-bold text-accent-950"
           >
             AP
           </span>
-          <span className="hidden sm:inline">{site.name}</span>
-          <span className="sm:hidden">AI Production Partner</span>
+          <span className="flex flex-col leading-tight">
+            <span>{site.name}</span>
+            <span className="text-[11px] font-medium text-accent-700">
+              by {site.parentBrand}
+            </span>
+          </span>
         </Link>
 
         <nav aria-label="Main navigation" className="hidden xl:block">
-          <ul className="flex items-center gap-5 text-sm text-slate-300">
+          <ul className="flex items-center gap-5 text-sm text-slate-600">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="transition-colors hover:text-white"
+                  className="transition-colors hover:text-slate-900"
                 >
                   {link.label}
                 </Link>
@@ -89,7 +93,7 @@ export default function Header() {
           {languageSwitch}
           <Link
             href={localePath(locale, site.primaryCta.href)}
-            className="rounded-md bg-accent-500 px-4 py-2 text-sm font-semibold text-ink-950 transition-colors hover:bg-accent-400"
+            className="rounded-md bg-accent-500 px-4 py-2 text-sm font-semibold text-accent-950 transition-colors hover:bg-accent-300"
           >
             {dict.nav.bookShort}
           </Link>
@@ -99,7 +103,7 @@ export default function Header() {
           {languageSwitch}
           <button
             type="button"
-            className="rounded-md p-2 text-slate-300 hover:text-white"
+            className="rounded-md p-2 text-slate-600 hover:text-slate-900"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={dict.nav.toggleMenu}
@@ -129,14 +133,14 @@ export default function Header() {
         <nav
           id="mobile-menu"
           aria-label="Mobile navigation"
-          className="border-t border-ink-700/60 bg-ink-900 xl:hidden"
+          className="border-t border-mint-200 bg-mint-50 xl:hidden"
         >
           <ul className="space-y-1 px-4 py-4">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block rounded-md px-3 py-2 text-slate-200 hover:bg-ink-800"
+                  className="block rounded-md px-3 py-2 text-slate-700 hover:bg-mint-100"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -146,7 +150,7 @@ export default function Header() {
             <li>
               <Link
                 href={localePath(locale, site.primaryCta.href)}
-                className="mt-2 block rounded-md bg-accent-500 px-3 py-2 text-center font-semibold text-ink-950"
+                className="mt-2 block rounded-md bg-accent-500 px-3 py-2 text-center font-semibold text-accent-950"
                 onClick={() => setOpen(false)}
               >
                 {dict.cta.primary}

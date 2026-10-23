@@ -91,6 +91,7 @@ export type UiDict = {
       readinessReview: string;
       securityAudit: string;
       deployment: string;
+      integration: string;
       support: string;
       other: string;
     };
@@ -129,7 +130,7 @@ const en: UiDict = {
       "Turn AI-generated applications into production-ready systems. We take applications built with Cursor, Claude Code, Lovable, Replit, and Bolt from prototype to secure, scalable, monitored production.",
     rights: "All rights reserved.",
     positioning:
-      "Not a software house. Not a web agency. We make AI-built apps production-ready.",
+      "A service by GO Along Co., Ltd. — AI builds it, we make it production-ready and stay accountable for it.",
     contact: "Contact",
     pricing: "Pricing",
     bookFree: "Book a Free Assessment",
@@ -191,7 +192,8 @@ const en: UiDict = {
       readinessReview: "Request a Production Readiness Review",
       securityAudit: "AI Security Audit",
       deployment: "Deployment / Migration",
-      support: "Ongoing Production Support",
+      integration: "System Integration (ERP, database, devices)",
+      support: "Managed Hosting + Care Plan",
       other: "Something else",
     },
   },
@@ -226,10 +228,10 @@ const th: UiDict = {
     resourcesColumn: "คลังความรู้",
     companyColumn: "บริษัท",
     tagline:
-      "เปลี่ยนแอปพลิเคชันที่สร้างด้วย AI ให้เป็นระบบระดับ Production — เรารับช่วงต่อแอปที่สร้างด้วย Cursor, Claude Code, Lovable, Replit และ Bolt จาก prototype สู่ระบบที่ปลอดภัย ขยายตัวได้ และมี monitoring ครบ",
+      "ตรวจ เชื่อม และดูแลระบบที่คุณสร้างด้วย AI ตั้งแต่ ChatGPT, Claude Code, Cursor, Lovable จนถึง Bolt ให้ปลอดภัย เชื่อมกับระบบเดิมได้ และมีคนดูแลทุกเดือน",
     rights: "สงวนลิขสิทธิ์",
     positioning:
-      "เราไม่ใช่ software house ไม่ใช่ web agency — เราทำให้แอปที่สร้างด้วย AI พร้อมใช้งานจริงบน Production",
+      "ให้บริการโดย บริษัท โกอะลอง จำกัด — AI สร้างได้ เราทำให้ใช้จริงได้ และรับผิดชอบให้",
     contact: "ติดต่อเรา",
     pricing: "ราคาแพ็กเกจ",
     bookFree: "ขอรับการประเมินฟรี",
@@ -289,7 +291,8 @@ const th: UiDict = {
       readinessReview: "ขอรับ Production Readiness Review",
       securityAudit: "ตรวจสอบความปลอดภัย (AI Security Audit)",
       deployment: "Deployment / ย้ายระบบ",
-      support: "ดูแลระบบ Production ต่อเนื่อง",
+      integration: "เชื่อมต่อระบบ (ERP, ฐานข้อมูลเดิม, อุปกรณ์หน้างาน)",
+      support: "Managed Hosting + Care Plan รายเดือน",
       other: "เรื่องอื่น ๆ",
     },
   },

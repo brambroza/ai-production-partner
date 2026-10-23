@@ -10,6 +10,7 @@ const inquiryTypeValues = [
   "readiness-review",
   "security-audit",
   "deployment",
+  "integration",
   "support",
   "other",
 ] as const;
@@ -30,6 +31,7 @@ export default function ContactForm({
     { value: "readiness-review", label: dict.types.readinessReview },
     { value: "security-audit", label: dict.types.securityAudit },
     { value: "deployment", label: dict.types.deployment },
+    { value: "integration", label: dict.types.integration },
     { value: "support", label: dict.types.support },
     { value: "other", label: dict.types.other },
   ];
@@ -120,13 +122,13 @@ export default function ContactForm({
   }
 
   const inputClass =
-    "w-full rounded-md border border-ink-600 bg-ink-950 px-4 py-3 text-white placeholder:text-slate-500 focus:border-accent-400 focus:outline-none";
+    "w-full rounded-md border border-mint-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-accent-400 focus:outline-none";
 
   return (
     <form onSubmit={submit} className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
-          <span className="mb-1.5 block text-sm font-medium text-slate-300">
+          <span className="mb-1.5 block text-sm font-medium text-slate-600">
             {dict.name}
           </span>
           <input
@@ -139,7 +141,7 @@ export default function ContactForm({
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-sm font-medium text-slate-300">
+          <span className="mb-1.5 block text-sm font-medium text-slate-600">
             {locale === "th" ? "อีเมลสำหรับติดต่อกลับ" : "Reply email"}
           </span>
           <input
@@ -155,7 +157,7 @@ export default function ContactForm({
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
-          <span className="mb-1.5 block text-sm font-medium text-slate-300">
+          <span className="mb-1.5 block text-sm font-medium text-slate-600">
             {dict.company}
           </span>
           <input
@@ -169,7 +171,7 @@ export default function ContactForm({
       </div>
 
       <label className="block">
-        <span className="mb-1.5 block text-sm font-medium text-slate-300">
+        <span className="mb-1.5 block text-sm font-medium text-slate-600">
           {dict.needWhat}
         </span>
         <select
@@ -186,7 +188,7 @@ export default function ContactForm({
       </label>
 
       <label className="block">
-        <span className="mb-1.5 block text-sm font-medium text-slate-300">
+        <span className="mb-1.5 block text-sm font-medium text-slate-600">
           {dict.builtWith}
         </span>
         <input
@@ -199,7 +201,7 @@ export default function ContactForm({
       </label>
 
       <label className="block">
-        <span className="mb-1.5 block text-sm font-medium text-slate-300">
+        <span className="mb-1.5 block text-sm font-medium text-slate-600">
           {dict.situation}
         </span>
         <textarea
@@ -215,7 +217,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full rounded-md bg-accent-500 px-6 py-3.5 font-semibold text-ink-950 transition-colors hover:bg-accent-400 sm:w-auto"
+        className="w-full rounded-md bg-accent-500 px-6 py-3.5 font-semibold text-accent-950 transition-colors hover:bg-accent-300 sm:w-auto"
       >
         {status === "sending"
           ? locale === "th"
@@ -224,7 +226,7 @@ export default function ContactForm({
           : dict.send}
       </button>
       {status === "sent" && (
-        <p className="text-sm font-medium text-accent-300">
+        <p className="text-sm font-medium text-accent-700">
           {locale === "th"
             ? "ส่งข้อความแล้ว เราจะตอบกลับทางอีเมลภายใน 1 วันทำการ"
             : "Message sent. We will reply by email within one business day."}
@@ -233,12 +235,12 @@ export default function ContactForm({
       {status === "error" && (
         <div
           role="alert"
-          className="space-y-3 rounded-md border border-red-400/30 bg-red-950/30 p-4"
+          className="space-y-3 rounded-md border border-red-200 bg-red-50 p-4"
         >
-          <p className="text-sm font-medium text-red-200">{errorMessage}</p>
+          <p className="text-sm font-medium text-red-700">{errorMessage}</p>
           <a
             href={mailtoHref(typeLabel)}
-            className="inline-flex w-full items-center justify-center rounded-md border border-accent-400 px-4 py-2.5 text-sm font-semibold text-accent-200 transition-colors hover:bg-accent-400 hover:text-ink-950 sm:w-auto"
+            className="inline-flex w-full items-center justify-center rounded-md border border-accent-400 px-4 py-2.5 text-sm font-semibold text-accent-700 transition-colors hover:bg-accent-300 hover:text-accent-950 sm:w-auto"
           >
             {locale === "th" ? "เปิดอีเมลพร้อมข้อความนี้" : "Open email with this message"}
           </a>
@@ -248,7 +250,7 @@ export default function ContactForm({
         {locale === "th"
           ? "ข้อความจะถูกส่งถึงทีมงานโดยตรง หรือเขียนถึงเราได้ที่"
           : "Your message is sent directly to our team, or write to us at"}{" "}
-        <a href={`mailto:${site.email}`} className="text-accent-300 hover:underline">
+        <a href={`mailto:${site.email}`} className="text-accent-700 hover:underline">
           {site.email}
         </a>
         . {dict.mailtoNote2}

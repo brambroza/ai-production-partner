@@ -5,9 +5,11 @@
  */
 export const site = {
   name: "AI Production Partner",
-  legalName: "AI Production Partner Co., Ltd.",
+  legalName: "GO Along Co., Ltd. (บริษัท โกอะลอง จำกัด)",
+  parentBrand: "GO Along",
+  parentUrl: "https://goalong.co.th",
   url: "https://aiproductionpartner.com",
-  tagline: "Turn AI-generated applications into production-ready systems.",
+  tagline: "AI builds it. We make it production-ready — and stay accountable for it.",
   description:
     "AI Production Partner transforms AI-generated applications from tools like Cursor, Claude Code, Lovable, Replit, and Bolt into secure, scalable, enterprise-grade production systems. Production readiness assessments, security audits, Docker and Kubernetes deployment, CI/CD, monitoring, and ongoing support.",
   email: "amnart.gl@gmail.com",

@@ -49,7 +49,7 @@ export default function ChecklistPage({
         })}
       />
 
-      <section className="border-b border-ink-700/60 py-16">
+      <section className="border-b border-mint-200 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             crumbs={[
@@ -59,16 +59,16 @@ export default function ChecklistPage({
             ]}
           />
           <div className="mt-8 max-w-3xl">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               {title}
             </h1>
-            <p className="mt-4 text-lg leading-8 text-slate-300">{intro}</p>
-            <p className="mt-6 flex flex-wrap gap-4 text-sm text-slate-400">
+            <p className="mt-4 text-lg leading-8 text-slate-600">{intro}</p>
+            <p className="mt-6 flex flex-wrap gap-4 text-sm text-slate-500">
               <span>
-                <strong className="text-white">{totalItems}</strong> items
+                <strong className="text-slate-900">{totalItems}</strong> items
               </span>
               <span>
-                <strong className="text-accent-300">{criticalCount}</strong>{" "}
+                <strong className="text-accent-700">{criticalCount}</strong>{" "}
                 marked critical
               </span>
               <span>Free to use — no signup required</span>
@@ -83,28 +83,28 @@ export default function ChecklistPage({
             <section key={group.name} aria-labelledby={`group-${groupIndex}`}>
               <h2
                 id={`group-${groupIndex}`}
-                className="text-2xl font-bold tracking-tight text-white"
+                className="text-2xl font-bold tracking-tight text-slate-900"
               >
                 {groupIndex + 1}. {group.name}
               </h2>
-              <p className="mt-1 text-slate-400">{group.description}</p>
+              <p className="mt-1 text-slate-500">{group.description}</p>
               <ul className="mt-6 space-y-3">
                 {group.items.map((item) => (
                   <li
                     key={item.title}
-                    className="rounded-xl border border-ink-700/60 bg-ink-900 p-5"
+                    className="rounded-xl border border-mint-200 bg-mint-50 p-5"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="font-semibold text-white">
+                      <h3 className="font-semibold text-slate-900">
                         {item.title}
                       </h3>
                       {item.critical && (
-                        <span className="shrink-0 rounded-full border border-red-400/40 bg-red-950/40 px-2.5 py-0.5 text-xs font-semibold text-red-300">
+                        <span className="shrink-0 rounded-full border border-red-200 bg-red-50 px-2.5 py-0.5 text-xs font-semibold text-red-600">
                           Critical
                         </span>
                       )}
                     </div>
-                    <p className="mt-1.5 text-sm leading-7 text-slate-300">
+                    <p className="mt-1.5 text-sm leading-7 text-slate-600">
                       {item.detail}
                     </p>
                   </li>
@@ -113,11 +113,11 @@ export default function ChecklistPage({
             </section>
           ))}
 
-          <aside className="rounded-xl border border-accent-600/40 bg-ink-900 p-8 text-center">
-            <h2 className="text-2xl font-bold text-white">
+          <aside className="rounded-xl border border-accent-300 bg-mint-50 p-8 text-center">
+            <h2 className="text-2xl font-bold text-slate-900">
               Want every box verifiably checked?
             </h2>
-            <p className="mx-auto mt-3 max-w-xl leading-7 text-slate-300">
+            <p className="mx-auto mt-3 max-w-xl leading-7 text-slate-600">
               Use this checklist yourself — that&apos;s what it&apos;s for. Or
               have us implement and verify every item at a fixed price, with
               documentation to prove it.
@@ -125,13 +125,13 @@ export default function ChecklistPage({
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href={serviceHref}
-                className="rounded-md bg-accent-500 px-6 py-3 font-semibold text-ink-950 transition-colors hover:bg-accent-400"
+                className="rounded-md bg-accent-500 px-6 py-3 font-semibold text-accent-950 transition-colors hover:bg-accent-300"
               >
                 {serviceLabel}
               </Link>
               <Link
                 href={site.primaryCta.href}
-                className="rounded-md border border-slate-600 px-6 py-3 font-semibold text-white transition-colors hover:border-accent-400 hover:text-accent-300"
+                className="rounded-md border border-mint-300 px-6 py-3 font-semibold text-slate-900 transition-colors hover:border-accent-400 hover:text-accent-700"
               >
                 {site.primaryCta.label}
               </Link>
@@ -139,7 +139,7 @@ export default function ChecklistPage({
           </aside>
 
           <section aria-label="Checklist FAQ">
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900">
               Frequently asked questions
             </h2>
             <div className="mt-6">

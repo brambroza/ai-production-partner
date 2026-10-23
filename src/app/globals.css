@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 /*
- * AI Production Partner — design tokens.
- * Enterprise-grade, minimal, dark-first palette aimed at CTOs and
- * engineering teams. Accent is used sparingly for conversion points.
+ * AI Production Partner by GO Along — design tokens.
+ * Light theme: white surfaces, soft pastel-mint panels, and a deeper
+ * green reserved for text accents and calls to action.
  */
 @theme {
-  --color-ink-950: #060a13;
-  --color-ink-900: #0b1120;
-  --color-ink-800: #111a2e;
-  --color-ink-700: #1c2942;
-  --color-ink-600: #2b3b5c;
+  /* Pastel mint surfaces and hairlines */
+  --color-mint-50: #f3fbf6;
+  --color-mint-100: #e6f6ec;
+  --color-mint-200: #d2eedc;
+  --color-mint-300: #b6e3c6;
 
-  --color-accent-300: #5eead4;
-  --color-accent-400: #2dd4bf;
-  --color-accent-500: #14b8a6;
-  --color-accent-600: #0d9488;
+  /* Green accent: light shades for fills, dark shades for readable text */
+  --color-accent-50: #effaf3;
+  --color-accent-100: #dcf5e5;
+  --color-accent-200: #bdebd0;
+  --color-accent-300: #95dcb3;
+  --color-accent-400: #67c993;
+  --color-accent-500: #3fb67a;
+  --color-accent-600: #23895a;
+  --color-accent-700: #1b6e48;
+  --color-accent-800: #18573b;
+  --color-accent-900: #144731;
+  --color-accent-950: #0a2a1c;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "IBM Plex Sans Thai", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", monospace;
 }
@@ -28,21 +36,21 @@ html {
 }
 
 body {
-  background-color: var(--color-ink-950);
-  color: #e2e8f0;
+  background-color: #ffffff;
+  color: #334155;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background-color: var(--color-accent-500);
-  color: var(--color-ink-950);
+  background-color: var(--color-accent-200);
+  color: var(--color-accent-950);
 }
 
 /* Visible focus ring for keyboard users (WCAG 2.4.7) */
 :focus-visible {
-  outline: 2px solid var(--color-accent-400);
+  outline: 2px solid var(--color-accent-600);
   outline-offset: 2px;
 }
 

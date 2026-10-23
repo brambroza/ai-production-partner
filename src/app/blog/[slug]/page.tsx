@@ -67,13 +67,13 @@ export default async function BlogArticlePage({ params }: Props) {
           />
 
           <header className="mt-10">
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
               {article.category}
             </p>
-            <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
               {article.title}
             </h1>
-            <p className="mt-4 text-lg leading-8 text-slate-300">
+            <p className="mt-4 text-lg leading-8 text-slate-600">
               {article.description}
             </p>
             <p className="mt-4 text-sm text-slate-500">
@@ -86,13 +86,13 @@ export default async function BlogArticlePage({ params }: Props) {
           <div className="mt-12 space-y-10">
             {article.sections.map((section) => (
               <section key={section.heading}>
-                <h2 className="text-2xl font-bold tracking-tight text-white">
+                <h2 className="text-2xl font-bold tracking-tight text-slate-900">
                   {section.heading}
                 </h2>
                 {section.paragraphs.map((paragraph) => (
                   <p
                     key={paragraph.slice(0, 40)}
-                    className="mt-4 leading-8 text-slate-300"
+                    className="mt-4 leading-8 text-slate-600"
                   >
                     {paragraph}
                   </p>
@@ -101,18 +101,18 @@ export default async function BlogArticlePage({ params }: Props) {
             ))}
           </div>
 
-          <aside className="mt-14 rounded-xl border border-ink-700/60 bg-ink-900 p-6">
-            <h2 className="font-semibold text-white">
+          <aside className="mt-14 rounded-xl border border-mint-200 bg-mint-50 p-6">
+            <h2 className="font-semibold text-slate-900">
               Want this handled for you?
             </h2>
-            <p className="mt-2 text-sm leading-6 text-slate-300">
+            <p className="mt-2 text-sm leading-6 text-slate-600">
               We take AI-built applications to production every week —
               assessment, hardening, deployment, and support. The initial
               production readiness assessment is free.
             </p>
             <Link
               href={site.primaryCta.href}
-              className="mt-4 inline-block rounded-md bg-accent-500 px-5 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-accent-400"
+              className="mt-4 inline-block rounded-md bg-accent-500 px-5 py-2.5 text-sm font-semibold text-accent-950 transition-colors hover:bg-accent-300"
             >
               {site.primaryCta.label}
             </Link>
@@ -120,13 +120,13 @@ export default async function BlogArticlePage({ params }: Props) {
 
           {related.length > 0 && (
             <nav aria-label="Related articles" className="mt-14">
-              <h2 className="text-xl font-bold text-white">Related articles</h2>
+              <h2 className="text-xl font-bold text-slate-900">Related articles</h2>
               <ul className="mt-4 space-y-3">
                 {related.map((relatedArticle) => (
                   <li key={relatedArticle.slug}>
                     <Link
                       href={`/blog/${relatedArticle.slug}`}
-                      className="text-accent-300 underline-offset-4 hover:underline"
+                      className="text-accent-700 underline-offset-4 hover:underline"
                     >
                       {relatedArticle.title}
                     </Link>

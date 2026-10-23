@@ -15,6 +15,8 @@ import {
   homeFaq,
   industries,
   painPoints,
+  coreOffers,
+  coreOffersTh,
   services,
   techIconSlug,
   techStack,
@@ -36,6 +38,13 @@ const enMetadata: Metadata = pageMetadata({
     "cursor app deployment",
     "claude code deployment",
     "lovable app production",
+    "ai app rescue",
+    "ai generated code audit",
+    "vibe coding production",
+    "system integration erp",
+    "managed hosting and maintenance",
+    "software house thailand",
+    "GO Along",
   ],
 });
 
@@ -51,31 +60,60 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+      <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         {title}
       </h2>
-      {lede && <p className="mt-4 text-lg leading-8 text-slate-300">{lede}</p>}
+      {lede && <p className="mt-4 text-lg leading-8 text-slate-600">{lede}</p>}
     </div>
   );
 }
 
 const homeTh = {
   metadata: {
-    title: "AI Production Partner — เปลี่ยนแอปที่สร้างด้วย AI ให้พร้อมใช้งานจริง",
+    title: "ตรวจ เชื่อม และดูแลระบบที่สร้างด้วย AI | AI Production Partner by โกอะลอง",
     description:
-      "เราช่วยตรวจสอบ เสริมความปลอดภัย deploy และดูแลแอปที่สร้างด้วย AI ให้พร้อมใช้งานจริงบน Production",
+      "รับตรวจระบบที่สร้างด้วย ChatGPT, Claude, Cursor ก่อนใช้งานจริง (ราคาเหมา รู้ผล 48 ชม.) เชื่อมต่อ ERP ฐานข้อมูล อุปกรณ์หน้างาน และดูแล hosting, backup, security รายเดือน โดย บริษัท โกอะลอง จำกัด",
+    keywords: [
+      "ตรวจระบบที่สร้างด้วย AI",
+      "ตรวจโค้ดที่ AI เขียน",
+      "แก้ระบบที่ทำด้วย AI",
+      "รับแก้โปรแกรมที่ ChatGPT เขียน",
+      "audit ระบบ ก่อนใช้งานจริง",
+      "ตรวจสอบความปลอดภัยเว็บแอปพลิเคชัน",
+      "รับเชื่อมต่อระบบ ERP",
+      "เชื่อม API กับ ERP",
+      "เชื่อมระบบกับ SQL Server",
+      "รับทำ system integration",
+      "เชื่อม LINE OA กับระบบ",
+      "รับดูแลระบบรายเดือน",
+      "รับดูแลเว็บไซต์และ server รายเดือน",
+      "managed hosting ประเทศไทย",
+      "บริการ backup ข้อมูลบริษัท",
+      "deploy แอปที่สร้างด้วย AI",
+      "vibe coding ขึ้น production",
+      "software house สมุทรปราการ",
+      "โกอะลอง",
+      "GO Along",
+    ],
   },
   hero: {
-    pill: "สำหรับทีมที่สร้างด้วย Cursor · Claude Code · Lovable · Replit · Bolt",
-    titleA: "เปลี่ยนแอปที่สร้างด้วย AI ให้เป็น",
-    titleB: "ระบบพร้อมใช้งานจริง",
+    pill: "สำหรับธุรกิจที่สร้างระบบเองด้วย ChatGPT · Claude · Cursor · Lovable · Bolt",
+    titleA: "AI สร้างระบบได้",
+    titleB: "เราทำให้ใช้งานจริงได้ และรับผิดชอบให้",
     body:
-      "คุณสร้างแอปได้เร็วด้วย AI เราช่วยทำให้ปลอดภัย ขยายระบบได้ และพร้อมใช้งานระดับองค์กร: security audit, Docker & Kubernetes, CI/CD, monitoring และ support พร้อม SLA",
+      "ตรวจระบบที่สร้างด้วย AI ก่อนใช้งานจริง เชื่อมต่อกับ ERP ฐานข้อมูล และอุปกรณ์หน้างานที่มีอยู่ แล้วดูแล hosting, backup และ security ให้ทุกเดือน",
+    byline: "โดยทีม บริษัท โกอะลอง จำกัด",
   },
   sections: {
+    core: {
+      eyebrow: "3 บริการหลัก",
+      title: "ตรวจ เชื่อม และดูแล ระบบที่คุณสร้างด้วย AI",
+      lede:
+        "เริ่มจากตรวจระบบแบบราคาเหมา ต่อด้วยเชื่อมกับระบบเดิม แล้วให้เราดูแลรายเดือน เลือกเฉพาะบริการที่ต้องการได้",
+    },
     pain: {
       eyebrow: "คุ้นกับปัญหานี้ไหม?",
       title: "แอปที่ AI สร้างใช้งานได้ แต่คุณยังไม่กล้าไว้ใจ",
@@ -95,7 +133,7 @@ const homeTh = {
         "6 เสาหลักที่พาแอปที่สร้างด้วย AI จาก prototype ไปสู่ production แบบวัดผลได้",
     },
     services: {
-      eyebrow: "สิ่งที่เราทำ",
+      eyebrow: "รายละเอียดบริการ",
       title: "บริการ Production ครบวงจร",
       lede:
         "ทุกอย่างระหว่าง “AI สร้างแอปให้แล้ว” กับ “ลูกค้าใช้งานจริงได้อย่างมั่นใจ”",
@@ -226,12 +264,16 @@ const homeTh = {
     ["SaaS & Startups", "จาก AI-built MVP สู่แพลตฟอร์มที่นักลงทุนและลูกค้าองค์กรไว้ใจ"],
     ["E-commerce", "ความเสถียร performance และ payment flow ที่ downtime คือรายได้ที่หายไป"],
     ["Fintech", "security hardening, audit trail และ data protection ตามความคาดหวังด้าน compliance"],
-    ["Healthcare", "infrastructure และ access control ที่ใส่ privacy ก่อนสำหรับข้อมูลอ่อนไหว"],
+    ["โรงงานและ SME ไทย", "ระบบที่สร้างเองถูกเชื่อมกับ ERP ฐานข้อมูล และอุปกรณ์หน้างาน พร้อมคนดูแลต่อเนื่อง"],
     ["Internal Tools & IT", "เปลี่ยนแอปที่แต่ละแผนกสร้างด้วย AI ให้ IT รับช่วงดูแลได้อย่างปลอดภัย"],
     ["Agencies & Software Houses", "ทีม production engineering แบบ white-label หลังบ้านให้การส่งมอบลูกค้า"],
   ].map(([name, body]) => ({ name, body })),
   faq: [
-    ["AI Production Partner ทำอะไร?", "เราทำให้แอปที่สร้างด้วย AI พร้อมใช้งานจริง: audit, hardening, containerization, cloud/Kubernetes deployment, CI/CD, monitoring, backup, documentation และ support"],
+    ["ทุกวันนี้ใช้ AI สร้างระบบเองได้แล้ว ทำไมต้องจ้างเรา?", "สร้างด้วย AI ต่อไปได้เลย เพราะเร็วจริง แต่สิ่งที่ AI ไม่ได้ให้คือความรับผิดชอบ ทั้งการตรวจว่าโค้ดปลอดภัย การเชื่อมกับ ERP ฐานข้อมูล และอุปกรณ์เดิม และคนที่คอย backup อัปเดต และดูแลให้ระบบรันได้ทุกวัน ส่วนนี้คือสิ่งที่เราให้บริการ"],
+    ["AI Production Partner คือใคร?", "เป็นบริการของ บริษัท โกอะลอง จำกัด (GO Along) software house ในสมุทรปราการ ที่รับทำระบบ เว็บ แอป และดูแล network, server, backup ให้ธุรกิจไทย เราเริ่มจากระบบที่คุณสร้างไว้แล้ว ทำให้ใช้งานจริงได้ และดูแลต่อ"],
+    ["ตรวจระบบ (AI App Rescue) ได้อะไรบ้าง?", "รายงานช่องโหว่และจุดเสี่ยงจากการตรวจ 40+ จุด พร้อม Production Readiness Score และแผนแก้ไขแบบราคาเหมา รู้ผลภายใน 48 ชั่วโมงหลังได้สิทธิ์เข้าถึงโค้ด"],
+    ["เชื่อมกับ ERP หรือฐานข้อมูลเดิมได้ไหม?", "ได้ เราเชื่อมกับ ERP โปรแกรมบัญชี SQL Server, MySQL, PostgreSQL, LINE OA, e-Tax Invoice, payment gateway และอุปกรณ์หน้างาน เช่น เครื่องสแกนบาร์โค้ดและ handheld"],
+    ["Care Plan รายเดือนดูแลอะไรบ้าง?", "Hosting บน cloud หรือ server ในองค์กร, monitoring แจ้งเตือนผ่าน LINE/อีเมล, backup อัตโนมัติพร้อมทดสอบกู้คืน, security patch, firewall, SSL และรายงานรายเดือน"],
     ["แอปที่สร้างด้วย AI ใช้ Production ได้จริงไหม?", "ได้ โค้ดทำงานจริงอยู่แล้ว ช่องว่างคือ production layer รอบ ๆ เช่น security, infrastructure, observability และ recovery"],
     ["ค่าใช้จ่ายประมาณเท่าไหร่?", "เริ่มจากประเมินฟรีภายใน 48 ชั่วโมง จากนั้นให้ fixed-price proposal ตาม gap จริง งานทั่วไปใช้ 2-6 สัปดาห์"],
     ["Production Readiness Assessment คืออะไร?", "การรีวิว 40+ checkpoints ด้าน security, architecture, infrastructure, delivery และ operations พร้อม score และ roadmap"],
@@ -260,6 +302,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
   const pageWhyAiAppsFail = copy?.whyAiAppsFail ?? whyAiAppsFail;
   const pageFrameworkPillars = copy?.frameworkPillars ?? frameworkPillars;
   const pageServices = copy?.services ?? services;
+  const pageCoreOffers = localized ? coreOffersTh : coreOffers;
   const pageWorkflow = copy?.workflow ?? workflow;
   const pageBeforeAfter = copy?.beforeAfter ?? beforeAfter;
   const pageIndustries = copy?.industries ?? industries;
@@ -273,42 +316,45 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       {/* 1. Hero */}
       <section
         aria-labelledby="hero-heading"
-        className="relative overflow-hidden border-b border-ink-700/60"
+        className="relative overflow-hidden border-b border-mint-200"
       >
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(20,184,166,0.12),transparent_60%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(134,214,170,0.28),transparent_60%)]"
         />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="inline-flex items-center gap-2 rounded-full border border-ink-600 bg-ink-900 px-4 py-1.5 text-sm text-slate-300">
-              <span aria-hidden="true" className="h-2 w-2 rounded-full bg-accent-400" />
+            <p className="inline-flex items-center gap-2 rounded-full border border-mint-300 bg-mint-50 px-4 py-1.5 text-sm text-slate-600">
+              <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-accent-400" />
               {pageHero?.pill ??
                 "For teams building with Cursor · Claude Code · Lovable · Replit · Bolt"}
             </p>
             <h1
               id="hero-heading"
-              className="mt-8 text-4xl font-bold tracking-tight text-white sm:text-6xl"
+              className="mt-8 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl"
             >
               {pageHero?.titleA ?? "Turn AI-generated applications into"}{" "}
-              <span className="text-accent-400">
+              <span className="block text-accent-600">
                 {pageHero?.titleB ?? "production-ready systems"}
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
               {pageHero?.body ??
-                "You built it fast with AI. We make it secure, scalable, and enterprise-grade: security audits, Docker & Kubernetes, CI/CD, monitoring, and SLA-backed support. Not a software house — your production engineering partner."}
+                "You built it fast with AI. We make it secure, scalable, and enterprise-grade: security audits, Docker & Kubernetes, CI/CD, monitoring, and SLA-backed support."}{" "}
+              <span className="whitespace-nowrap font-medium text-accent-700">
+                {pageHero?.byline ?? "Built and run by GO Along."}
+              </span>
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href={path(site.primaryCta.href)}
-                className="w-full rounded-md bg-accent-500 px-8 py-4 text-base font-semibold text-ink-950 transition-colors hover:bg-accent-400 sm:w-auto"
+                className="w-full rounded-md bg-accent-500 px-8 py-4 text-base font-semibold text-accent-950 transition-colors hover:bg-accent-300 sm:w-auto"
               >
                 {dict.cta.primary}
               </Link>
               <Link
                 href={path("/tools/production-score")}
-                className="w-full rounded-md border border-slate-600 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-accent-400 hover:text-accent-300 sm:w-auto"
+                className="w-full rounded-md border border-mint-300 px-8 py-4 text-base font-semibold text-slate-900 transition-colors hover:border-accent-400 hover:text-accent-700 sm:w-auto"
               >
                 {dict.cta.freeScore}
               </Link>
@@ -324,7 +370,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
               {aiBuilders.map((tool) => (
                 <li
                   key={tool.slug}
-                  className="flex items-center gap-2 text-slate-500 transition-colors hover:text-slate-200"
+                  className="flex items-center gap-2 text-slate-500 transition-colors hover:text-slate-700"
                 >
                   <BrandLogo slug={tool.slug} label={tool.name} className="h-6 w-6" />
                   <span className="text-sm font-medium">{tool.name}</span>
@@ -336,14 +382,73 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
           {/* Trust bar */}
           <dl className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-8 lg:grid-cols-4">
             {pageTrustSignals.map((signal) => (
-              <div key={signal.label} className="text-center">
-                <dt className="order-2 mt-2 block text-sm leading-6 text-slate-400">
+              <div key={signal.label} className="flex flex-col-reverse text-center">
+                <dt className="order-2 mt-2 block text-sm leading-6 text-slate-500">
                   {signal.label}
                 </dt>
-                <dd className="text-3xl font-bold text-white">{signal.metric}</dd>
+                <dd className="text-3xl font-bold text-slate-900">{signal.metric}</dd>
               </div>
             ))}
           </dl>
+        </div>
+      </section>
+
+      {/* 1b. Core offers */}
+      <section aria-labelledby="core-heading" id="services" className="border-b border-mint-200 py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
+              {pageSections?.core.eyebrow ?? "Three core services"}
+            </p>
+            <h2
+              id="core-heading"
+              className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+            >
+              {pageSections?.core.title ??
+                "Audit, integrate, and look after the system you built with AI"}
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              {pageSections?.core.lede ??
+                "Start with a fixed-price audit, connect it to the systems you already run, then let us look after it every month. Pick only what you need."}
+            </p>
+          </div>
+          <ol className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
+            {pageCoreOffers.map((offer, index) => (
+              <li
+                key={offer.id}
+                id={offer.id}
+                className="flex flex-col rounded-2xl border border-mint-200 bg-gradient-to-b from-mint-50 to-white p-7 shadow-[0_1px_2px_rgba(10,42,28,0.04),0_8px_24px_-12px_rgba(27,110,72,0.18)]"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-200 font-mono font-bold text-accent-900">
+                    {index + 1}
+                  </span>
+                  <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-accent-700 ring-1 ring-mint-300">
+                    {offer.tag}
+                  </span>
+                </div>
+                <h3 className="mt-5 text-xl font-bold text-slate-900">{offer.name}</h3>
+                <p className="mt-2 font-medium text-accent-700">{offer.hook}</p>
+                <p className="mt-3 leading-7 text-slate-600">{offer.body}</p>
+                <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-6 text-slate-700">
+                  {offer.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-2.5">
+                      <span aria-hidden="true" className="mt-0.5 text-accent-600">
+                        ✓
+                      </span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={path(offer.cta.href)}
+                  className="mt-7 block rounded-lg bg-accent-500 px-5 py-3 text-center font-semibold text-accent-950 transition-colors hover:bg-accent-300"
+                >
+                  {offer.cta.label}
+                </Link>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -365,10 +470,10 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
             {pagePainPoints.map((point) => (
               <div
                 key={point.title}
-                className="rounded-xl border border-ink-700/60 bg-ink-900 p-6"
+                className="rounded-xl border border-mint-200 bg-mint-50 p-6"
               >
-                <h3 className="font-semibold text-white">{point.title}</h3>
-                <p className="mt-2 leading-7 text-slate-300">{point.body}</p>
+                <h3 className="font-semibold text-slate-900">{point.title}</h3>
+                <p className="mt-2 leading-7 text-slate-600">{point.body}</p>
               </div>
             ))}
           </div>
@@ -378,7 +483,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       {/* 3. Why AI apps fail */}
       <section
         aria-labelledby="why-fail-heading"
-        className="border-y border-ink-700/60 bg-ink-900/50 py-24"
+        className="border-y border-mint-200 bg-mint-50/70 py-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -393,21 +498,21 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
             {pageWhyAiAppsFail.map((reason, index) => (
               <li
                 key={reason.title}
-                className="rounded-xl border border-ink-700/60 bg-ink-950 p-6"
+                className="rounded-xl border border-mint-200 bg-white p-6"
               >
-                <span className="font-mono text-sm text-accent-400">
+                <span className="font-mono text-sm text-accent-600">
                   {localized ? "สาเหตุ" : "Cause"} {index + 1}
                 </span>
-                <h3 className="mt-2 font-semibold text-white">{reason.title}</h3>
-                <p className="mt-2 leading-7 text-slate-300">{reason.body}</p>
+                <h3 className="mt-2 font-semibold text-slate-900">{reason.title}</h3>
+                <p className="mt-2 leading-7 text-slate-600">{reason.body}</p>
               </li>
             ))}
           </ol>
-          <p className="mx-auto mt-10 max-w-3xl text-center text-slate-400">
+          <p className="mx-auto mt-10 max-w-3xl text-center text-slate-500">
             Deep dive:{" "}
             <Link
               href={path("/blog/why-ai-generated-apps-fail-in-production")}
-              className="text-accent-300 underline-offset-4 hover:underline"
+              className="text-accent-700 underline-offset-4 hover:underline"
             >
               Why AI-Generated Apps Fail in Production (and How to Prevent It)
             </Link>
@@ -433,15 +538,15 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
             {pageFrameworkPillars.map((pillar) => (
               <div
                 key={pillar.number}
-                className="rounded-xl border border-ink-700/60 bg-ink-900 p-6 transition-colors hover:border-accent-600"
+                className="rounded-xl border border-mint-200 bg-mint-50 p-6 transition-colors hover:border-accent-400"
               >
-                <span className="font-mono text-2xl font-bold text-accent-400">
+                <span className="font-mono text-2xl font-bold text-accent-600">
                   {pillar.number}
                 </span>
-                <h3 className="mt-3 text-xl font-semibold text-white">
+                <h3 className="mt-3 text-xl font-semibold text-slate-900">
                   {pillar.title}
                 </h3>
-                <p className="mt-2 leading-7 text-slate-300">{pillar.body}</p>
+                <p className="mt-2 leading-7 text-slate-600">{pillar.body}</p>
               </div>
             ))}
           </div>
@@ -451,8 +556,8 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       {/* 5. Services */}
       <section
         aria-labelledby="services-heading"
-        id="services"
-        className="border-y border-ink-700/60 bg-ink-900/50 py-24"
+        id="all-services"
+        className="border-y border-mint-200 bg-mint-50/70 py-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -468,12 +573,12 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
               <Link
                 key={service.href}
                 href={path(service.href)}
-                className="group rounded-xl border border-ink-700/60 bg-ink-950 p-5 transition-colors hover:border-accent-600"
+                className="group rounded-xl border border-mint-200 bg-white p-5 transition-colors hover:border-accent-400"
               >
-                <h3 className="font-semibold text-white group-hover:text-accent-300">
+                <h3 className="font-semibold text-slate-900 group-hover:text-accent-700">
                   {service.name}
                 </h3>
-                <p className="mt-1.5 text-sm leading-6 text-slate-400">
+                <p className="mt-1.5 text-sm leading-6 text-slate-500">
                   {service.blurb}
                 </p>
               </Link>
@@ -500,13 +605,13 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
             {pageWorkflow.map((phase) => (
               <li
                 key={phase.step}
-                className="relative rounded-xl border border-ink-700/60 bg-ink-900 p-6"
+                className="relative rounded-xl border border-mint-200 bg-mint-50 p-6"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-500 font-mono font-bold text-ink-950">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-500 font-mono font-bold text-accent-950">
                   {phase.step}
                 </span>
-                <h3 className="mt-4 font-semibold text-white">{phase.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">
+                <h3 className="mt-4 font-semibold text-slate-900">{phase.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
                   {phase.body}
                 </p>
               </li>
@@ -518,7 +623,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       {/* 7. Before vs After */}
       <section
         aria-labelledby="before-after-heading"
-        className="border-y border-ink-700/60 bg-ink-900/50 py-24"
+        className="border-y border-mint-200 bg-mint-50/70 py-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -528,7 +633,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
               "Before vs. after production readiness"
             }
           />
-          <div className="mx-auto mt-14 max-w-5xl overflow-x-auto rounded-xl border border-ink-700/60">
+          <div className="mx-auto mt-14 max-w-5xl overflow-x-auto rounded-xl border border-mint-200">
             <table className="w-full min-w-[640px] text-left text-sm">
               <caption className="sr-only">
                 {localized
@@ -536,26 +641,26 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
                   : "Comparison of an AI-built app before and after production readiness work"}
               </caption>
               <thead>
-                <tr className="border-b border-ink-700/60 bg-ink-900 text-white">
+                <tr className="border-b border-mint-200 bg-mint-50 text-slate-900">
                   <th scope="col" className="px-6 py-4 font-semibold">
                     {localized ? "มิติ" : "Dimension"}
                   </th>
-                  <th scope="col" className="px-6 py-4 font-semibold text-red-300">
+                  <th scope="col" className="px-6 py-4 font-semibold text-red-600">
                     {localized ? "ก่อน" : "Before"}
                   </th>
-                  <th scope="col" className="px-6 py-4 font-semibold text-accent-300">
+                  <th scope="col" className="px-6 py-4 font-semibold text-accent-700">
                     {localized ? "หลัง" : "After"}
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-ink-700/60 bg-ink-950">
+              <tbody className="divide-y divide-mint-200 bg-white">
                 {pageBeforeAfter.map((row) => (
                   <tr key={row.dimension}>
-                    <th scope="row" className="px-6 py-4 font-medium text-white">
+                    <th scope="row" className="px-6 py-4 font-medium text-slate-900">
                       {row.dimension}
                     </th>
-                    <td className="px-6 py-4 text-slate-400">{row.before}</td>
-                    <td className="px-6 py-4 text-slate-200">{row.after}</td>
+                    <td className="px-6 py-4 text-slate-500">{row.before}</td>
+                    <td className="px-6 py-4 text-slate-700">{row.after}</td>
                   </tr>
                 ))}
               </tbody>
@@ -582,9 +687,9 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
             {techStack.map((group) => (
               <div
                 key={group.category}
-                className="rounded-xl border border-ink-700/60 bg-ink-900 p-6"
+                className="rounded-xl border border-mint-200 bg-mint-50 p-6"
               >
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                   {group.category}
                 </h3>
                 <ul className="mt-3 flex flex-wrap gap-2">
@@ -593,13 +698,13 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
                     return (
                       <li
                         key={item}
-                        className="inline-flex items-center gap-1.5 rounded-md border border-ink-600 bg-ink-950 px-2.5 py-1 text-sm text-slate-200 transition-colors hover:border-accent-600 hover:text-white"
+                        className="inline-flex items-center gap-1.5 rounded-md border border-mint-300 bg-white px-2.5 py-1 text-sm text-slate-700 transition-colors hover:border-accent-400 hover:text-slate-900"
                       >
                         {slug && (
                           <BrandLogo
                             slug={slug}
                             label={item}
-                            className="h-4 w-4 text-slate-400"
+                            className="h-4 w-4 text-slate-500"
                           />
                         )}
                         {item}
@@ -616,7 +721,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       {/* 9. Industries */}
       <section
         aria-labelledby="industries-heading"
-        className="border-y border-ink-700/60 bg-ink-900/50 py-24"
+        className="border-y border-mint-200 bg-mint-50/70 py-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -630,10 +735,10 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
             {pageIndustries.map((industry) => (
               <div
                 key={industry.name}
-                className="rounded-xl border border-ink-700/60 bg-ink-950 p-6"
+                className="rounded-xl border border-mint-200 bg-white p-6"
               >
-                <h3 className="font-semibold text-white">{industry.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">
+                <h3 className="font-semibold text-slate-900">{industry.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
                   {industry.body}
                 </p>
               </div>
@@ -658,7 +763,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       {/* 11. Blog preview */}
       <section
         aria-labelledby="blog-heading"
-        className="border-y border-ink-700/60 bg-ink-900/50 py-24"
+        className="border-y border-mint-200 bg-mint-50/70 py-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -676,18 +781,18 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
             {latestArticles.map((article) => (
               <article
                 key={article.slug}
-                className="flex flex-col rounded-xl border border-ink-700/60 bg-ink-950 p-6"
+                className="flex flex-col rounded-xl border border-mint-200 bg-white p-6"
               >
-                <p className="text-sm text-accent-400">{article.category}</p>
-                <h3 className="mt-2 font-semibold text-white">
+                <p className="text-sm text-accent-600">{article.category}</p>
+                <h3 className="mt-2 font-semibold text-slate-900">
                   <Link
                     href={path(`/blog/${article.slug}`)}
-                    className="hover:text-accent-300"
+                    className="hover:text-accent-700"
                   >
                     {article.title}
                   </Link>
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-6 text-slate-400">
+                <p className="mt-2 flex-1 text-sm leading-6 text-slate-500">
                   {article.description}
                 </p>
                 <p className="mt-4 text-xs text-slate-500">
@@ -700,7 +805,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
           <p className="mt-10 text-center">
             <Link
               href={path("/blog")}
-              className="font-semibold text-accent-300 underline-offset-4 hover:underline"
+              className="font-semibold text-accent-700 underline-offset-4 hover:underline"
             >
               {pageSections?.blog.browse ?? "Browse all"} {blogArticles.length}{" "}
               {localized ? "บทความ" : "articles"} →
@@ -716,39 +821,39 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       <section
         aria-labelledby="contact-heading"
         id="contact"
-        className="border-t border-ink-700/60 py-24"
+        className="border-t border-mint-200 py-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+              <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
                 {pageSections?.contact.eyebrow ?? "Contact"}
               </p>
               <h2
                 id="contact-heading"
-                className="mt-3 text-3xl font-bold tracking-tight text-white"
+                className="mt-3 text-3xl font-bold tracking-tight text-slate-900"
               >
                 {pageSections?.contact.title ??
                   "Talk to a production engineer — not a salesperson"}
               </h2>
-              <p className="mt-4 leading-8 text-slate-300">
+              <p className="mt-4 leading-8 text-slate-600">
                 {pageSections?.contact.body ??
                   "Tell us what you built and where it needs to run. You'll get a straight technical answer within one business day, and a free production assessment if you want one. NDA available before any code is shared."}
               </p>
-              <dl className="mt-8 space-y-4 text-slate-300">
+              <dl className="mt-8 space-y-4 text-slate-600">
                 <div>
-                  <dt className="text-sm font-semibold text-slate-400">Email</dt>
+                  <dt className="text-sm font-semibold text-slate-500">Email</dt>
                   <dd>
                     <a
                       href={`mailto:${site.email}`}
-                      className="text-accent-300 hover:underline"
+                      className="text-accent-700 hover:underline"
                     >
                       {site.email}
                     </a>
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-sm font-semibold text-slate-400">
+                  <dt className="text-sm font-semibold text-slate-500">
                     {pageSections?.contact.response ?? "Response time"}
                   </dt>
                   <dd>
@@ -758,18 +863,18 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
                 </div>
               </dl>
             </div>
-            <div className="rounded-xl border border-ink-700/60 bg-ink-900 p-8">
-              <h3 className="text-xl font-semibold text-white">
+            <div className="rounded-xl border border-mint-200 bg-mint-50 p-8">
+              <h3 className="text-xl font-semibold text-slate-900">
                 {pageSections?.contact.cardTitle ?? "Start with the free assessment"}
               </h3>
-              <ul className="mt-4 space-y-3 text-slate-300">
+              <ul className="mt-4 space-y-3 text-slate-600">
                 {(pageSections?.contact.bullets ?? [
                   "Production Readiness Score across 40+ checkpoints",
                   "Prioritized findings report within 48 hours",
                   "Fixed-price proposal — no hourly billing, no obligation",
                 ]).map((item) => (
                   <li key={item} className="flex gap-3">
-                    <span aria-hidden="true" className="text-accent-400">
+                    <span aria-hidden="true" className="text-accent-600">
                       ✓
                     </span>
                     {item}
@@ -778,13 +883,13 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
               </ul>
               <Link
                 href={path(site.primaryCta.href)}
-                className="mt-8 block rounded-md bg-accent-500 px-6 py-3 text-center font-semibold text-ink-950 transition-colors hover:bg-accent-400"
+                className="mt-8 block rounded-md bg-accent-500 px-6 py-3 text-center font-semibold text-accent-950 transition-colors hover:bg-accent-300"
               >
                 {dict.cta.primary}
               </Link>
               <Link
                 href={path(site.secondaryCta.href)}
-                className="mt-3 block rounded-md border border-slate-600 px-6 py-3 text-center font-semibold text-white transition-colors hover:border-accent-400 hover:text-accent-300"
+                className="mt-3 block rounded-md border border-mint-300 px-6 py-3 text-center font-semibold text-slate-900 transition-colors hover:border-accent-400 hover:text-accent-700"
               >
                 {dict.cta.secondary}
               </Link>
@@ -804,6 +909,7 @@ export function thaiHomeMetadata(): Metadata {
   return pageMetadata({
     title: homeTh.metadata.title,
     description: homeTh.metadata.description,
+    keywords: homeTh.metadata.keywords,
     path: "/",
     locale: "th",
   });

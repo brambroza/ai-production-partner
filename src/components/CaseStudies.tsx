@@ -30,31 +30,31 @@ export default function CaseStudies({ locale = "en" }: { locale?: Locale }) {
   return (
     <section
       aria-labelledby="case-studies-heading"
-      className="border-y border-ink-700/60 bg-ink-900/50 py-24"
+      className="border-y border-mint-200 bg-mint-50/70 py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+          <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
             {t.eyebrow}
           </p>
           <h2
             id="case-studies-heading"
-            className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+            className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
           >
             {t.title}
           </h2>
-          <p className="mt-4 text-lg leading-8 text-slate-300">{t.lede}</p>
+          <p className="mt-4 text-lg leading-8 text-slate-600">{t.lede}</p>
         </div>
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
           {studies.map((study) => (
             <article
               key={study.slug}
-              className="flex flex-col rounded-xl border border-ink-700/60 bg-ink-950 p-6"
+              className="flex flex-col rounded-xl border border-mint-200 bg-white p-6"
             >
               <div className="flex items-center justify-between gap-3">
-                <h3 className="font-semibold text-white">{study.client}</h3>
-                <span className="rounded-md border border-ink-600 px-2 py-0.5 text-xs text-slate-400">
+                <h3 className="font-semibold text-slate-900">{study.client}</h3>
+                <span className="rounded-md border border-mint-300 px-2 py-0.5 text-xs text-slate-500">
                   {study.industry}
                 </span>
               </div>
@@ -62,22 +62,22 @@ export default function CaseStudies({ locale = "en" }: { locale?: Locale }) {
                 {t.builtWith} {study.builtWith}
               </p>
 
-              <p className="mt-4 text-sm leading-6 text-slate-400">{study.challenge}</p>
-              <p className="mt-3 text-sm leading-6 text-slate-200">{study.outcome}</p>
+              <p className="mt-4 text-sm leading-6 text-slate-500">{study.challenge}</p>
+              <p className="mt-3 text-sm leading-6 text-slate-700">{study.outcome}</p>
 
-              <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-ink-700/60 pt-5">
+              <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-mint-200 pt-5">
                 {study.metrics.map((metric) => (
                   <div key={metric.label}>
                     <dt className="sr-only">{metric.label}</dt>
-                    <dd className="text-xl font-bold text-accent-300">{metric.value}</dd>
+                    <dd className="text-xl font-bold text-accent-700">{metric.value}</dd>
                     <p className="mt-1 text-xs leading-4 text-slate-500">{metric.label}</p>
                   </div>
                 ))}
               </dl>
 
               {study.quote && (
-                <blockquote className="mt-5 border-t border-ink-700/60 pt-5">
-                  <p className="text-sm italic leading-6 text-slate-300">
+                <blockquote className="mt-5 border-t border-mint-200 pt-5">
+                  <p className="text-sm italic leading-6 text-slate-600">
                     “{study.quote.text}”
                   </p>
                   <footer className="mt-2 text-xs text-slate-500">

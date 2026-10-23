@@ -12,7 +12,18 @@ export function organizationSchema() {
     logo: absoluteUrl(site.logoPath),
     description: site.description,
     email: site.email,
-    sameAs: [site.linkedin, site.github],
+    sameAs: [site.linkedin, site.github, site.parentUrl],
+    parentOrganization: {
+      "@type": "Organization",
+      name: "GO Along Co., Ltd.",
+      alternateName: ["บริษัท โกอะลอง จำกัด", "โกอะลอง", "GO Along"],
+      url: site.parentUrl,
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "Samut Prakan",
+        addressCountry: "TH",
+      },
+    },
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
@@ -28,6 +39,12 @@ export function organizationSchema() {
       "Cloud security",
       "DevOps",
       "AI-generated code",
+      "AI app production audit",
+      "System integration with ERP and on-premise databases",
+      "Managed hosting and maintenance",
+      "ตรวจระบบที่สร้างด้วย AI",
+      "เชื่อมต่อระบบ ERP",
+      "ดูแลระบบรายเดือน",
     ],
   };
 }

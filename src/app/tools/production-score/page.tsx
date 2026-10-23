@@ -50,7 +50,7 @@ const toolFaq = [
 export default function ProductionScorePage() {
   return (
     <>
-      <section className="border-b border-ink-700/60 py-16">
+      <section className="border-b border-mint-200 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             crumbs={[
@@ -60,10 +60,10 @@ export default function ProductionScorePage() {
             ]}
           />
           <div className="mt-8 max-w-3xl">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               Free AI Production Score
             </h1>
-            <p className="mt-4 text-lg leading-8 text-slate-300">
+            <p className="mt-4 text-lg leading-8 text-slate-600">
               How production-ready is your AI-built app? Point this tool at a
               GitHub repository or upload a ZIP and get an instant score across
               security, delivery, infrastructure, observability, and
@@ -80,9 +80,9 @@ export default function ProductionScorePage() {
         </div>
       </section>
 
-      <section aria-label="Tool FAQ" className="border-t border-ink-700/60 py-16">
+      <section aria-label="Tool FAQ" className="border-t border-mint-200 py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-white">
+          <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900">
             Frequently asked questions
           </h2>
           <div className="mt-10">

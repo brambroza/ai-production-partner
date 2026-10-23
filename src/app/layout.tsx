@@ -59,6 +59,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap"
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
         <Analytics />
         <HtmlLang />
@@ -67,7 +75,7 @@ export default function RootLayout({
         <JsonLd data={professionalServiceSchema()} />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent-500 focus:px-4 focus:py-2 focus:font-semibold focus:text-ink-950"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent-500 focus:px-4 focus:py-2 focus:font-semibold focus:text-accent-950"
         >
           Skip to main content
         </a>

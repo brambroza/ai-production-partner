@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMetadata({
 export default function BlogIndexPage() {
   return (
     <>
-      <section className="border-b border-ink-700/60 py-16">
+      <section className="border-b border-mint-200 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             crumbs={[
@@ -29,10 +29,10 @@ export default function BlogIndexPage() {
               { name: "Blog", path: "/blog" },
             ]}
           />
-          <h1 className="mt-8 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="mt-8 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
             Blog
           </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
             {blogArticles.length} technical guides on taking AI-built
             applications to production — deployment, security, performance,
             and operations.

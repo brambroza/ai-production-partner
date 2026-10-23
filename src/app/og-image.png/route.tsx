@@ -18,8 +18,8 @@ export async function GET() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(135deg, #060a13 0%, #0b1120 60%, #0f2a26 100%)",
-          color: "#e2e8f0",
+          background: "linear-gradient(135deg, #ffffff 0%, #f3fbf6 55%, #d2eedc 100%)",
+          color: "#0f172a",
           fontFamily: "sans-serif",
         }}
       >
@@ -40,15 +40,15 @@ export async function GET() {
               width: 64,
               height: 64,
               borderRadius: 14,
-              background: "#14b8a6",
-              color: "#060a13",
+              background: "#95dcb3",
+              color: "#0a2a1c",
               fontSize: 28,
               fontWeight: 700,
             }}
           >
             AP
           </div>
-          {site.name}
+          {site.name} · by GO Along
         </div>
         <div
           style={{
@@ -56,14 +56,14 @@ export async function GET() {
             fontSize: 62,
             fontWeight: 700,
             lineHeight: 1.15,
-            color: "#ffffff",
+            color: "#0a2a1c",
             maxWidth: 980,
           }}
         >
           Turn AI-generated apps into production-ready systems.
         </div>
-        <div style={{ marginTop: 32, fontSize: 28, color: "#94a3b8" }}>
-          Security · Docker · Kubernetes · CI/CD · Monitoring · Support
+        <div style={{ marginTop: 32, fontSize: 28, color: "#1b6e48" }}>
+          AI App Rescue · Integration · Managed Hosting & Care Plan
         </div>
       </div>
     ),

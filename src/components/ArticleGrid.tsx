@@ -8,9 +8,9 @@ export default function ArticleGrid({ articles }: { articles: BlogArticle[] }) {
       {articles.map((article) => (
         <article
           key={article.slug}
-          className="flex flex-col rounded-xl border border-ink-700/60 bg-ink-900 p-6"
+          className="flex flex-col rounded-xl border border-mint-200 bg-mint-50 p-6"
         >
-          <p className="text-sm text-accent-400">
+          <p className="text-sm text-accent-600">
             <Link
               href={`/blog/category/${categorySlug(article.category)}`}
               className="hover:underline"
@@ -18,15 +18,15 @@ export default function ArticleGrid({ articles }: { articles: BlogArticle[] }) {
               {article.category}
             </Link>
           </p>
-          <h2 className="mt-2 font-semibold text-white">
+          <h2 className="mt-2 font-semibold text-slate-900">
             <Link
               href={`/blog/${article.slug}`}
-              className="hover:text-accent-300"
+              className="hover:text-accent-700"
             >
               {article.title}
             </Link>
           </h2>
-          <p className="mt-2 flex-1 text-sm leading-6 text-slate-400">
+          <p className="mt-2 flex-1 text-sm leading-6 text-slate-500">
             {article.description}
           </p>
           <p className="mt-4 text-xs text-slate-500">

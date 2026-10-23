@@ -55,7 +55,7 @@ export default function ResourceSearch({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={`Search ${resources.length} resources — try "docker", "security", "lovable"…`}
-            className="w-full rounded-md border border-ink-600 bg-ink-900 px-4 py-3 text-white placeholder:text-slate-500 focus:border-accent-400 focus:outline-none"
+            className="w-full rounded-md border border-mint-300 bg-mint-50 px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-accent-400 focus:outline-none"
           />
         </label>
         <label>
@@ -63,7 +63,7 @@ export default function ResourceSearch({
           <select
             value={typeFilter}
             onChange={(event) => setTypeFilter(event.target.value)}
-            className="w-full rounded-md border border-ink-600 bg-ink-900 px-4 py-3 text-white focus:border-accent-400 focus:outline-none sm:w-48"
+            className="w-full rounded-md border border-mint-300 bg-mint-50 px-4 py-3 text-slate-900 focus:border-accent-400 focus:outline-none sm:w-48"
           >
             {types.map((type) => (
               <option key={type} value={type}>
@@ -74,7 +74,7 @@ export default function ResourceSearch({
         </label>
       </div>
 
-      <p className="mt-4 text-sm text-slate-400" role="status">
+      <p className="mt-4 text-sm text-slate-500" role="status">
         {results.length} resource{results.length === 1 ? "" : "s"} found
       </p>
 
@@ -83,15 +83,15 @@ export default function ResourceSearch({
           <li key={resource.href}>
             <Link
               href={resource.href}
-              className="group block h-full rounded-xl border border-ink-700/60 bg-ink-900 p-5 transition-colors hover:border-accent-600"
+              className="group block h-full rounded-xl border border-mint-200 bg-mint-50 p-5 transition-colors hover:border-accent-400"
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-accent-400">
+              <p className="text-xs font-semibold uppercase tracking-wide text-accent-600">
                 {resource.type}
               </p>
-              <h2 className="mt-2 font-semibold text-white group-hover:text-accent-300">
+              <h2 className="mt-2 font-semibold text-slate-900 group-hover:text-accent-700">
                 {resource.title}
               </h2>
-              <p className="mt-1.5 line-clamp-2 text-sm leading-6 text-slate-400">
+              <p className="mt-1.5 line-clamp-2 text-sm leading-6 text-slate-500">
                 {resource.description}
               </p>
             </Link>
@@ -100,7 +100,7 @@ export default function ResourceSearch({
       </ul>
 
       {results.length === 0 && (
-        <p className="mt-10 text-center text-slate-400">
+        <p className="mt-10 text-center text-slate-500">
           Nothing matched. Try a broader term like &ldquo;deploy&rdquo;,
           &ldquo;security&rdquo;, or &ldquo;monitoring&rdquo;.
         </p>

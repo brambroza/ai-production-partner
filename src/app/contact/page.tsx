@@ -91,28 +91,28 @@ export default async function ContactPage({ searchParams }: Props) {
         />
         <div className="mt-10 grid gap-14 lg:grid-cols-2">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               {copy.title}
             </h1>
-            <p className="mt-4 text-lg leading-8 text-slate-300">
+            <p className="mt-4 text-lg leading-8 text-slate-600">
               {copy.intro}
             </p>
-            <dl className="mt-10 space-y-6 text-slate-300">
+            <dl className="mt-10 space-y-6 text-slate-600">
               <div>
-                <dt className="text-sm font-semibold text-slate-400">
+                <dt className="text-sm font-semibold text-slate-500">
                   {copy.email}
                 </dt>
                 <dd className="mt-1">
                   <a
                     href={`mailto:${site.email}`}
-                    className="text-accent-300 hover:underline"
+                    className="text-accent-700 hover:underline"
                   >
                     {site.email}
                   </a>
                 </dd>
               </div>
               <div>
-                <dt className="text-sm font-semibold text-slate-400">
+                <dt className="text-sm font-semibold text-slate-500">
                   {copy.nextHeading}
                 </dt>
                 <dd className="mt-1 leading-7">
@@ -121,7 +121,7 @@ export default async function ContactPage({ searchParams }: Props) {
               </div>
             </dl>
           </div>
-          <div className="rounded-xl border border-ink-700/60 bg-ink-900 p-8">
+          <div className="rounded-xl border border-mint-200 bg-mint-50 p-8">
             <ContactForm defaultType={type} locale={locale} />
           </div>
         </div>

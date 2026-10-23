@@ -261,7 +261,7 @@ export default async function PricingPage() {
 
   return (
     <>
-      <section className="border-b border-ink-700/60 py-16">
+      <section className="border-b border-mint-200 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             crumbs={[
@@ -270,16 +270,16 @@ export default async function PricingPage() {
             ]}
           />
           <div className="mt-8 max-w-3xl">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               {copy.title}
             </h1>
-            <p className="mt-4 text-lg leading-8 text-slate-300">{copy.intro}</p>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{copy.intro}</p>
             <p className="mt-4 text-sm leading-6 text-slate-500">{copy.note}</p>
           </div>
         </div>
       </section>
 
-      <section aria-label={copy.title} className="border-b border-ink-700/60 py-16">
+      <section aria-label={copy.title} className="border-b border-mint-200 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-5 lg:grid-cols-4">
             {copy.plans.map((plan) => (
@@ -287,22 +287,22 @@ export default async function PricingPage() {
                 key={plan.name}
                 className={`flex rounded-xl border p-6 ${
                   plan.featured
-                    ? "border-accent-500 bg-ink-900 shadow-[0_0_0_1px_rgba(34,211,238,0.18)]"
-                    : "border-ink-700/60 bg-ink-900/70"
+                    ? "border-accent-500 bg-mint-50 shadow-[0_0_0_1px_rgba(52,169,111,0.25)]"
+                    : "border-mint-200 bg-mint-50/80"
                 }`}
               >
                 <div className="flex w-full flex-col">
                   <div>
-                    <h2 className="text-xl font-bold tracking-tight text-white">
+                    <h2 className="text-xl font-bold tracking-tight text-slate-900">
                       {plan.name}
                     </h2>
                     <div className="mt-5 flex items-baseline gap-2">
-                      <span className="text-4xl font-bold tracking-tight text-white">
+                      <span className="text-4xl font-bold tracking-tight text-slate-900">
                         {plan.price}
                       </span>
                       <span className="text-sm text-slate-500">{plan.cadence}</span>
                     </div>
-                    <p className="mt-4 min-h-16 text-sm leading-6 text-slate-400">
+                    <p className="mt-4 min-h-16 text-sm leading-6 text-slate-500">
                       {plan.description}
                     </p>
                   </div>
@@ -311,23 +311,23 @@ export default async function PricingPage() {
                     href={localePath(locale, plan.href)}
                     className={`mt-6 rounded-md px-4 py-3 text-center text-sm font-semibold transition-colors ${
                       plan.featured
-                        ? "bg-accent-500 text-ink-950 hover:bg-accent-400"
-                        : "border border-slate-600 text-white hover:border-accent-400 hover:text-accent-300"
+                        ? "bg-accent-500 text-accent-950 hover:bg-accent-300"
+                        : "border border-mint-300 text-slate-900 hover:border-accent-400 hover:text-accent-700"
                     }`}
                   >
                     {plan.cta}
                   </Link>
 
-                  <ul className="mt-6 space-y-3 text-sm leading-6 text-slate-300">
+                  <ul className="mt-6 space-y-3 text-sm leading-6 text-slate-600">
                     {plan.includes.map((item) => (
                       <li key={item} className="flex gap-3">
-                        <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400" />
+                        <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-300" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <p className="mt-6 border-t border-ink-700/60 pt-4 text-xs leading-5 text-slate-500">
+                  <p className="mt-6 border-t border-mint-200 pt-4 text-xs leading-5 text-slate-500">
                     {plan.bestFor}
                   </p>
                 </div>
@@ -337,18 +337,18 @@ export default async function PricingPage() {
         </div>
       </section>
 
-      <section className="border-b border-ink-700/60 py-16">
+      <section className="border-b border-mint-200 py-16">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-white">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900">
               {copy.comparisonTitle}
             </h2>
           </div>
-          <div className="divide-y divide-ink-700/60 border-y border-ink-700/60">
+          <div className="divide-y divide-mint-200 border-y border-mint-200">
             {copy.comparisonRows.map((row) => (
               <div key={row.label} className="grid gap-2 py-5 sm:grid-cols-[0.35fr_0.65fr]">
-                <h3 className="font-semibold text-white">{row.label}</h3>
-                <p className="leading-7 text-slate-400">{row.value}</p>
+                <h3 className="font-semibold text-slate-900">{row.label}</h3>
+                <p className="leading-7 text-slate-500">{row.value}</p>
               </div>
             ))}
           </div>
@@ -357,14 +357,14 @@ export default async function PricingPage() {
 
       <section className="py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900">
             {copy.faqTitle}
           </h2>
-          <div className="mt-8 divide-y divide-ink-700/60 border-y border-ink-700/60">
+          <div className="mt-8 divide-y divide-mint-200 border-y border-mint-200">
             {copy.faqs.map((faq) => (
               <div key={faq.question} className="py-6">
-                <h3 className="font-semibold text-white">{faq.question}</h3>
-                <p className="mt-2 leading-7 text-slate-400">{faq.answer}</p>
+                <h3 className="font-semibold text-slate-900">{faq.question}</h3>
+                <p className="mt-2 leading-7 text-slate-500">{faq.answer}</p>
               </div>
             ))}
           </div>

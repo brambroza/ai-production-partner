@@ -43,7 +43,7 @@ const categoryMeta: { key: "platform" | "stack" | "cloud" | "service"; title: st
 export default function SolutionsPage() {
   return (
     <>
-      <section className="border-b border-ink-700/60 py-16">
+      <section className="border-b border-mint-200 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             crumbs={[
@@ -51,10 +51,10 @@ export default function SolutionsPage() {
               { name: "Solutions", path: "/solutions" },
             ]}
           />
-          <h1 className="mt-8 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="mt-8 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
             Solutions
           </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
             Whatever you built it with, wherever it needs to run — we take it
             to production. {landingPages.length} specialized solutions, one
             framework.
@@ -70,27 +70,27 @@ export default function SolutionsPage() {
           <section
             key={category.key}
             aria-labelledby={`category-${category.key}`}
-            className="border-b border-ink-700/60 py-16"
+            className="border-b border-mint-200 py-16"
           >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <h2
                 id={`category-${category.key}`}
-                className="text-2xl font-bold tracking-tight text-white"
+                className="text-2xl font-bold tracking-tight text-slate-900"
               >
                 {category.title}
               </h2>
-              <p className="mt-2 text-slate-400">{category.blurb}</p>
+              <p className="mt-2 text-slate-500">{category.blurb}</p>
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {pages.map((page) => (
                   <Link
                     key={page.slug}
                     href={`/${page.slug}`}
-                    className="group rounded-xl border border-ink-700/60 bg-ink-900 p-5 transition-colors hover:border-accent-600"
+                    className="group rounded-xl border border-mint-200 bg-mint-50 p-5 transition-colors hover:border-accent-400"
                   >
-                    <h3 className="font-semibold text-white group-hover:text-accent-300">
+                    <h3 className="font-semibold text-slate-900 group-hover:text-accent-700">
                       {page.name}
                     </h3>
-                    <p className="mt-1.5 line-clamp-2 text-sm leading-6 text-slate-400">
+                    <p className="mt-1.5 line-clamp-2 text-sm leading-6 text-slate-500">
                       {page.heroSubtitle}
                     </p>
                   </Link>

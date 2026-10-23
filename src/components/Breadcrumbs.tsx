@@ -9,7 +9,7 @@ export default function Breadcrumbs({
   crumbs: { name: string; path: string }[];
 }) {
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-slate-400">
+    <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <ol className="flex flex-wrap items-center gap-1">
         {crumbs.map((crumb, index) => {
@@ -17,18 +17,18 @@ export default function Breadcrumbs({
           return (
             <li key={crumb.path} className="flex items-center gap-1">
               {isLast ? (
-                <span aria-current="page" className="text-slate-200">
+                <span aria-current="page" className="text-slate-700">
                   {crumb.name}
                 </span>
               ) : (
                 <>
                   <Link
                     href={crumb.path}
-                    className="hover:text-accent-300"
+                    className="hover:text-accent-700"
                   >
                     {crumb.name}
                   </Link>
-                  <span aria-hidden="true" className="text-slate-600">
+                  <span aria-hidden="true" className="text-slate-400">
                     /
                   </span>
                 </>

@@ -72,7 +72,7 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <section className="border-b border-ink-700/60 py-16">
+      <section className="border-b border-mint-200 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             crumbs={[
@@ -80,10 +80,10 @@ export default function ResourcesPage() {
               { name: "Resources", path: "/resources" },
             ]}
           />
-          <h1 className="mt-8 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="mt-8 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
             Resource Center
           </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
             Everything we know about taking AI-built apps to production —
             {" "}{resources.length} guides, checklists, solutions, and free
             tools, all searchable.

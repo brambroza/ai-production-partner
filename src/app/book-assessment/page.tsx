@@ -58,7 +58,7 @@ const assessmentFaq = [
 export default function BookAssessmentPage() {
   return (
     <>
-      <section className="border-b border-ink-700/60 py-16">
+      <section className="border-b border-mint-200 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             crumbs={[
@@ -67,10 +67,10 @@ export default function BookAssessmentPage() {
             ]}
           />
           <div className="mt-8 max-w-3xl">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               Book a Free Production Assessment
             </h1>
-            <p className="mt-4 text-lg leading-8 text-slate-300">
+            <p className="mt-4 text-lg leading-8 text-slate-600">
               Find out exactly how far your AI-built app is from production —
               scored across 40+ checkpoints, prioritized by risk, delivered
               within 48 hours. Free, NDA available, no obligation.
@@ -85,21 +85,21 @@ export default function BookAssessmentPage() {
             {steps.map((step) => (
               <li
                 key={step.title}
-                className="rounded-xl border border-ink-700/60 bg-ink-900 p-6"
+                className="rounded-xl border border-mint-200 bg-mint-50 p-6"
               >
-                <h2 className="font-semibold text-white">{step.title}</h2>
-                <p className="mt-2 text-sm leading-7 text-slate-300">
+                <h2 className="font-semibold text-slate-900">{step.title}</h2>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
                   {step.body}
                 </p>
               </li>
             ))}
           </ol>
 
-          <div className="mx-auto mt-14 max-w-2xl rounded-xl border border-ink-700/60 bg-ink-900 p-8">
-            <h2 className="text-2xl font-bold text-white">Start here</h2>
+          <div className="mx-auto mt-14 max-w-2xl rounded-xl border border-mint-200 bg-mint-50 p-8">
+            <h2 className="text-2xl font-bold text-slate-900">Start here</h2>
             {site.bookingUrl && (
-              <div className="mt-6 rounded-lg border border-accent-500/40 bg-ink-950 p-5">
-                <p className="text-sm text-slate-300">
+              <div className="mt-6 rounded-lg border border-accent-500/40 bg-white p-5">
+                <p className="text-sm text-slate-600">
                   Prefer to talk it through? Grab a 20-minute slot and we'll walk
                   your app's production gaps together — no prep needed.
                 </p>
@@ -107,7 +107,7 @@ export default function BookAssessmentPage() {
                   href={site.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex rounded-md bg-accent-500 px-6 py-3 text-sm font-semibold text-ink-950 transition-colors hover:bg-accent-400"
+                  className="mt-4 inline-flex rounded-md bg-accent-500 px-6 py-3 text-sm font-semibold text-accent-950 transition-colors hover:bg-accent-300"
                 >
                   Book a 20-min call →
                 </a>
@@ -125,10 +125,10 @@ export default function BookAssessmentPage() {
 
       <section
         aria-label="Assessment FAQ"
-        className="border-t border-ink-700/60 py-16"
+        className="border-t border-mint-200 py-16"
       >
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-white">
+          <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900">
             Frequently asked questions
           </h2>
           <div className="mt-10">

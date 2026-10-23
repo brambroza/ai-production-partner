@@ -6,8 +6,8 @@ export default function CategoryNav({ active }: { active?: string }) {
   const pillClass = (isActive: boolean) =>
     `rounded-full border px-4 py-1.5 text-sm transition-colors ${
       isActive
-        ? "border-accent-500 bg-accent-500 font-semibold text-ink-950"
-        : "border-ink-600 text-slate-300 hover:border-accent-400"
+        ? "border-accent-500 bg-accent-500 font-semibold text-accent-950"
+        : "border-mint-300 text-slate-600 hover:border-accent-400"
     }`;
 
   return (

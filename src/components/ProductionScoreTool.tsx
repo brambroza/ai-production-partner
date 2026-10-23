@@ -158,9 +158,9 @@ export default function ProductionScoreTool() {
     <div>
       {/* Input panel */}
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-xl border border-ink-700/60 bg-ink-900 p-6">
-          <h2 className="font-semibold text-white">Option 1 — GitHub repository</h2>
-          <p className="mt-1.5 text-sm leading-6 text-slate-400">
+        <div className="rounded-xl border border-mint-200 bg-mint-50 p-6">
+          <h2 className="font-semibold text-slate-900">Option 1 — GitHub repository</h2>
+          <p className="mt-1.5 text-sm leading-6 text-slate-500">
             Public repositories only. We read the file listing via the GitHub
             API; no code is stored.
           </p>
@@ -178,28 +178,28 @@ export default function ProductionScoreTool() {
                 value={repoUrl}
                 onChange={(event) => setRepoUrl(event.target.value)}
                 placeholder="https://github.com/owner/repo"
-                className="w-full rounded-md border border-ink-600 bg-ink-950 px-4 py-3 text-white placeholder:text-slate-500 focus:border-accent-400 focus:outline-none"
+                className="w-full rounded-md border border-mint-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-accent-400 focus:outline-none"
               />
             </label>
             <button
               type="submit"
               disabled={state.status === "working"}
-              className="rounded-md bg-accent-500 px-5 py-3 font-semibold text-ink-950 transition-colors hover:bg-accent-400 disabled:opacity-50"
+              className="rounded-md bg-accent-500 px-5 py-3 font-semibold text-accent-950 transition-colors hover:bg-accent-300 disabled:opacity-50"
             >
               Analyze
             </button>
           </form>
         </div>
 
-        <div className="rounded-xl border border-ink-700/60 bg-ink-900 p-6">
-          <h2 className="font-semibold text-white">Option 2 — Upload a ZIP</h2>
-          <p className="mt-1.5 text-sm leading-6 text-slate-400">
+        <div className="rounded-xl border border-mint-200 bg-mint-50 p-6">
+          <h2 className="font-semibold text-slate-900">Option 2 — Upload a ZIP</h2>
+          <p className="mt-1.5 text-sm leading-6 text-slate-500">
             Works for private code: the archive is analyzed{" "}
-            <strong className="text-slate-200">entirely in your browser</strong>{" "}
+            <strong className="text-slate-700">entirely in your browser</strong>{" "}
             and never uploaded to any server.
           </p>
-          <label className="mt-4 block cursor-pointer rounded-md border border-dashed border-ink-600 bg-ink-950 px-4 py-6 text-center text-sm text-slate-300 transition-colors hover:border-accent-400">
-            <span className="font-semibold text-accent-300">Choose a .zip file</span>{" "}
+          <label className="mt-4 block cursor-pointer rounded-md border border-dashed border-mint-300 bg-white px-4 py-6 text-center text-sm text-slate-600 transition-colors hover:border-accent-400">
+            <span className="font-semibold text-accent-700">Choose a .zip file</span>{" "}
             (max 100 MB — exclude node_modules)
             <input
               type="file"
@@ -219,13 +219,13 @@ export default function ProductionScoreTool() {
       {/* Status */}
       <div aria-live="polite" className="mt-8">
         {state.status === "working" && (
-          <p className="rounded-xl border border-ink-700/60 bg-ink-900 p-6 text-slate-300">
-            <span aria-hidden="true" className="mr-2 inline-block animate-pulse text-accent-400">●</span>
+          <p className="rounded-xl border border-mint-200 bg-mint-50 p-6 text-slate-600">
+            <span aria-hidden="true" className="mr-2 inline-block animate-pulse text-accent-600">●</span>
             {state.message}
           </p>
         )}
         {state.status === "error" && (
-          <p className="rounded-xl border border-red-400/40 bg-red-950/30 p-6 text-red-200">
+          <p className="rounded-xl border border-red-200 bg-red-50 p-6 text-red-700">
             {state.message}
           </p>
         )}
@@ -233,18 +233,18 @@ export default function ProductionScoreTool() {
         {/* Report */}
         {state.status === "done" && (
           <div className="space-y-8">
-            <div className="rounded-xl border border-ink-700/60 bg-ink-900 p-8 text-center">
-              <p className="text-sm uppercase tracking-widest text-slate-400">
+            <div className="rounded-xl border border-mint-200 bg-mint-50 p-8 text-center">
+              <p className="text-sm uppercase tracking-widest text-slate-500">
                 Production Readiness Score — {state.source}
               </p>
-              <p className="mt-4 text-6xl font-bold text-white">
+              <p className="mt-4 text-6xl font-bold text-slate-900">
                 {state.report.score}
                 <span className="text-3xl text-slate-500">/100</span>
               </p>
-              <p className="mt-2 text-2xl font-bold text-accent-400">
+              <p className="mt-2 text-2xl font-bold text-accent-600">
                 Grade {state.report.grade}
               </p>
-              <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-300">
+              <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-600">
                 {state.report.verdict}
               </p>
               <p className="mt-3 text-xs text-slate-500">
@@ -255,16 +255,16 @@ export default function ProductionScoreTool() {
             </div>
 
             {state.report.secretFindings.length > 0 && (
-              <div className="rounded-xl border border-red-400/40 bg-red-950/30 p-6">
-                <h3 className="font-semibold text-red-200">
+              <div className="rounded-xl border border-red-200 bg-red-50 p-6">
+                <h3 className="font-semibold text-red-700">
                   ⚠ Possible exposed secrets ({state.report.secretFindings.length})
                 </h3>
-                <ul className="mt-3 space-y-1 font-mono text-sm text-red-200/90">
+                <ul className="mt-3 space-y-1 font-mono text-sm text-red-700">
                   {state.report.secretFindings.slice(0, 10).map((finding) => (
                     <li key={finding}>{finding}</li>
                   ))}
                 </ul>
-                <p className="mt-3 text-sm text-red-200/80">
+                <p className="mt-3 text-sm text-red-700">
                   Treat these as leaked: rotate the credentials now, then move
                   them to environment variables. (This analysis ran locally —
                   we have not seen or stored these values.)
@@ -276,10 +276,10 @@ export default function ProductionScoreTool() {
               {state.report.categories.map((category) => (
                 <div
                   key={category.name}
-                  className="rounded-xl border border-ink-700/60 bg-ink-900 p-4 text-center"
+                  className="rounded-xl border border-mint-200 bg-mint-50 p-4 text-center"
                 >
-                  <p className="text-sm text-slate-400">{category.name}</p>
-                  <p className="mt-1 text-xl font-bold text-white">
+                  <p className="text-sm text-slate-500">{category.name}</p>
+                  <p className="mt-1 text-xl font-bold text-slate-900">
                     {category.score}
                     <span className="text-sm text-slate-500">/{category.max}</span>
                   </p>
@@ -287,26 +287,26 @@ export default function ProductionScoreTool() {
               ))}
             </div>
 
-            <div className="overflow-hidden rounded-xl border border-ink-700/60">
-              <ul className="divide-y divide-ink-700/60">
+            <div className="overflow-hidden rounded-xl border border-mint-200">
+              <ul className="divide-y divide-mint-200">
                 {state.report.checks.map((check) => (
-                  <li key={check.id} className="bg-ink-900 px-6 py-4">
+                  <li key={check.id} className="bg-mint-50 px-6 py-4">
                     <div className="flex items-start gap-3">
                       <span
                         aria-hidden="true"
-                        className={check.passed ? "text-accent-400" : "text-red-400"}
+                        className={check.passed ? "text-accent-600" : "text-red-600"}
                       >
                         {check.passed ? "✓" : "✗"}
                       </span>
                       <div>
-                        <p className="font-medium text-white">
+                        <p className="font-medium text-slate-900">
                           {check.label}{" "}
                           <span className="text-xs text-slate-500">
                             ({check.category} · {check.weight} pts)
                           </span>
                         </p>
                         {!check.passed && (
-                          <p className="mt-1 text-sm leading-6 text-slate-400">
+                          <p className="mt-1 text-sm leading-6 text-slate-500">
                             {check.advice}
                           </p>
                         )}
@@ -317,11 +317,11 @@ export default function ProductionScoreTool() {
               </ul>
             </div>
 
-            <div className="rounded-xl border border-accent-600/40 bg-ink-900 p-8 text-center">
-              <h3 className="text-2xl font-bold text-white">
+            <div className="rounded-xl border border-accent-300 bg-mint-50 p-8 text-center">
+              <h3 className="text-2xl font-bold text-slate-900">
                 Want the real assessment behind this score?
               </h3>
-              <p className="mx-auto mt-3 max-w-2xl leading-7 text-slate-300">
+              <p className="mx-auto mt-3 max-w-2xl leading-7 text-slate-600">
                 This tool reads static signals. Our engineers review your
                 actual code, architecture, and infrastructure across 40+
                 checkpoints — with a prioritized findings report in 48 hours,
@@ -329,7 +329,7 @@ export default function ProductionScoreTool() {
               </p>
               <Link
                 href={site.primaryCta.href}
-                className="mt-6 inline-block rounded-md bg-accent-500 px-8 py-4 font-semibold text-ink-950 transition-colors hover:bg-accent-400"
+                className="mt-6 inline-block rounded-md bg-accent-500 px-8 py-4 font-semibold text-accent-950 transition-colors hover:bg-accent-300"
               >
                 {site.primaryCta.label}
               </Link>
